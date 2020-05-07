@@ -1,0 +1,80 @@
+@keyframes ui-open1 {
+	0% {
+		height: 0;
+		top: 50%;
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	11% {
+		opacity: 0.1;
+	}
+	20% {
+		opacity: 0;
+	}
+	21% {
+		opacity: 0.22;
+	}
+	30% {
+		opacity: 1;
+	}
+	31% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes notify-open {
+	0% {
+		opacity: 0;
+		left: 15%;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes notify-close {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		left: 85%;
+	}
+}
+
+@keyframes show-window {
+	0% {
+		//width: 300px;
+		//height: 120px;
+		opacity: 0;
+		//left: 400px;
+		//top: 210px;
+	}
+	100% {
+		//width: 550px;
+		//height: 310px;
+		opacity: 1;
+		//left: 500px;
+		//top: 300px;
+	}
+}	
+@keyframes hide-window {
+	100% {
+		//width: 300px;
+		//height: 120px;
+		opacity: 0;
+		//left: 400px;
+		//top: 210px;
+	}
+	0% {
+		//width: 550px;
+		//height: 310px;
+		opacity: 1;
+		//left: 500px;
+		//top: 300px;
+	}
+}

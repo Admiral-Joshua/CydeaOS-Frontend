@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fake Chat Room</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: rgb(0, 120, 240); padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li.you { background: #eee; }
+	  #messages li.notify {background: #ef0;}
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script-->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js'></script>
+	<script>
+		$(function () {
+			//var socket = io(4003);
+			
+			//var socket = io.connect("https://pke6.de:4003", {reconnect: true, rejectUnauthorized: false});
+			//var socket = io();
+			
+			desiredName = "";
+			while (desiredName == null || desiredName == "") {
+				var desiredName = prompt("Enter your Username:");
+			}
+			var socket = io.connect("https://wi.pke6.de:4003", {secure: true, reconnect: true, rejectUnauthorized: false});
+			socket.emit('setName', desiredName.toString());
+			$('form').submit(function(){
+				socket.emit('chat message', $('#m').val());
+				$('#m').val('');
+				return false;
+			});
+			socket.on('global', function(message){
+				var messageBoard = document.getElementById("messages");
+				var messageText = document.createElement("li");
+				if (message.type == "chat") {
+					if (message.sender == desiredName) {
+						messageText.className = "you";
+						message.sender = "You"
+					}
+					messageText.innerHTML = "<i><b>" + message.sender + "</i></b>: " + message.msg;
+				} else if (message.type == "notify") {
+					messageText.className = "notify";
+					messageText.innerHTML = "<i><b>" + message.msg + "</i></b>";
+				}
+				messageBoard.appendChild(messageText);
+			});
+		});
+	</script>
+  </body>
+</html>

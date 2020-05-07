@@ -1,0 +1,323 @@
+<html>
+
+<head>
+	<link href="assets/styles/general.css" rel="stylesheet"/>
+	<link href="assets/animations/fades-01.css" rel="stylesheet"/>
+	<link href="assets/animations/flashes-01.css" rel="stylesheet"/>
+	<link href="assets/animations/modules-01.css" rel="stylesheet" />
+	<link href="assets/styles/countdown.css" rel="stylesheet" />
+	<link href="assets/styles/watermark.css" rel="stylesheet" />
+    <title>Join Game - CydeaOS</title>
+    <style>
+		img.backgroundImg {
+			object-fit: fill;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			animation: pulse 4s infinite;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: -1;
+		}
+		.bgImage {
+			animation: background-in 1.5s forwards;
+		}
+		div#joinGameOptions {
+			width: 32%;
+			height: 28%;
+			text-align: center;	
+			position: absolute;
+			top: 36%;
+			left: 34%;
+			border: 1px solid rgba(0, 120, 240, 0.4);
+			//border-radius: 25px;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 35px;
+			animation: notify-open 1s forwards;
+			background-color: rgba(0, 60, 120, 0.3);
+		}
+		div#join-game-menu {
+			width: 32%;
+			height: 28%;
+			text-align: center;	
+			position: absolute;
+			top: 36%;
+			left: 34%;
+			border: 1px solid rgba(0, 120, 240, 0.4);
+			//border-radius: 25px;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 35px;
+			//animation: notify-open 1s forwards;
+			/*opacity: 0;*/
+			display: none;
+			background-color: rgba(0, 60, 120, 0.3);
+		}
+		input#codeInput {
+			font-size: 18pt;
+			background-color: transparent;
+			color: rgb(0, 120, 240);
+			font-family: NovaSquare;
+			border: 1px solid rgba(0, 60, 160, 0.6);
+			text-align: center;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 35px;
+			padding: 5px 8px;
+		}
+		input#unameInput {
+			font-size: 12pt;
+			background-color: transparent;
+			color: rgb(0, 120, 240);
+			font-family: NovaSquare;
+			border: 1px solid rgba(0, 60, 160, 0.6);
+			text-align: center;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 35px;
+			padding: 5px 8px;
+			width: 90%;
+			position: relative;
+			left: 5%;
+		}
+		p.joinLbl1 {
+			font-size: 14pt;
+			text-align: left;
+			margin: 6px 8px;
+		}	
+		p#joinLbl2 {
+			font-size: 12pt;
+			margin: 10px;
+		}
+		p#joinLbl3 {
+			font-size: 12pt;
+			margin: 10px;
+		}
+		button {
+			width: 130px;
+			height: 42px;
+			background-color: transparent;
+			border: 1px solid rgb(0, 120, 240);
+			color: rgb(0, 120, 240);
+			font-family: NovaSquare;
+			position: relative;
+			font-size: 12pt;
+			left: 5%;
+			top: 10px;
+			border-radius: 10px;
+			border-top-right-radius: 25px;
+			border-bottom-left-radius: 25px;
+		}
+		div#usernameMenu {
+			width: 20%;
+			height: 20%;
+			position: absolute;
+			left: 40%;
+			top: 40%;
+			background-color: rgba(0, 60, 120, 0.3);
+			border-radius: 10px;
+			border-bottom-left-radius: 40px;
+			border-top-right-radius: 40px;
+			display: none;
+		}
+		div#waitingMsg {
+			width: 20%;
+			height: 20%;
+			position: absolute;
+			left: 40%;
+			top: 40%;
+			background-color: rgba(0, 60, 120, 0.3);
+			border-radius: 10px;
+			border-bottom-left-radius: 40px;
+			border-top-right-radius: 40px;
+			display: none;
+		}
+		img.loadingGif {
+			width: 85px;
+			height: 65px;
+			position: absolute;
+			top: 64%;
+			left: 80%;
+			opacity: 0.4;
+		}
+		button.publicBtn {
+			width: 90%;
+			disabled: false;
+		}
+		button.privateBtn {
+			width: 90%;
+			disabled: false;
+		}
+	</style>
+</head>
+
+<body>
+<div id="ScaledContent">
+	<img class="backgroundImg bgImage" src="assets/binary-8.jpg"></img>
+    <div id="joinGameOptions">
+    	<p class="titlebar"><em class="titlebar-Text">CydeaOS - Join a Multiplayer Game</em></p>
+        <p class="joinLbl1">Welcome to CydeaOS!</p>
+        <p id="joinLbl2">Select a Join Type below: </p>
+    	<button id="publicBtn" onclick="searchGame()">Join a Public Game</button><br/>
+        <button id="privateBtn" onclick="showJoin()">Join a Private Game</button>
+    </div>
+    
+	<div id="join-game-menu">
+    	<p class="titlebar"><em class="titlebar-Text">CydeaOS - Join a Multiplayer Game</em></p>
+        <p class="joinLbl1">Welcome to CydeaOS!</p>
+        <p id="joinLbl2">Enter the join code that was shared with you here:</p>
+        <input type="text" onKeyDown="checkInput(event)" id="codeInput"/><br/>
+        <button onClick="attemptJoin()" id="submitBtn">Join Game</button>
+    </div>
+	
+	<!--div id="usernameMenu">
+		<p class="titlebar"><em class="titlebar-Text">CydeaOS - Username Entry</em></p>
+		<p class="joinLbl1">Connection Successful!</p>
+		<p id="joinLbl3">Now enter the username you'd like to be called throughout this game.</p>
+		<input type="text" id="unameInput" placeholder="Desired Username"></input>
+		<button onClick="submitPlayer()" id="submitBtn">Submit</button>
+	</div-->
+	
+	<div id="waitingMsg">
+		<p class="titlebar"><em class="titlebar-Text">CydeaOS - Please wait...</em></p>
+		<p class="joinLbl1">Welcome to CydeaOS!</p>
+		<p id="joinLbl2"><br/>Join Successful!<br/><br/>Waiting for the game to start...</p>
+		<img class="loadingGif" src="assets/ld.gif"></img>
+	</div>
+	
+	<div id="countdownContainer">
+		<p id="countReadout">3</p>
+	</div>
+	
+	<div class="cornerText">
+		<p class="postText"><em class="blue">Cydea</em><em class="red">OS</em></p>
+		<p class="versionText"><a href="changelog.txt" id="versionOut">Build Version 0.9.5</a></p>
+		
+	</div>
+</div>
+</body>
+
+<script type="text/javascript" src="assets/socket.io.js"></script>
+<!--script type="text/javascript" src="assets/scripts/startCountdown.js"></script-->
+<script type="text/javascript" src="assets/scripts/scalePage.js"></script>
+<script type="text/javascript">
+	var enteredCode = "";
+	//var socket = io.connect("http://127.0.0.1:4003");														// FOR TESTING
+	var socket = io.connect("https://cydeaos.lunasphere.co.uk:4003", {secure: true, reconnect: false, rejectUnauthorized: false}); 		// FOR WHEN ONLINE
+	
+	function checkInput(e) {
+		/* if ((e.keyCode > 57 || e.keyCode < 48) && (e.keyCode > 105 || e.keyCode < 96)) {
+			e.preventDefault();
+		} */
+	}
+	
+	function showJoin() {
+		document.getElementById("joinGameOptions").style.animation = "notify-close 2s forwards";
+		setTimeout(function() {
+			document.getElementById("join-game-menu").style.animation = "notify-open 2s forwards";
+			document.getElementById("join-game-menu").style.display = "block";
+			document.getElementById("joinGameOptions").style.display = "none";
+		}, 2000);
+	}
+	
+	socket.on('clientRes', function(msg) {
+		if (msg.type === "gameStart") {
+			if (msg.code === enteredCode) {
+				document.getElementById("waitingMsg").style.animation = "notify-close 2s forwards";
+				document.getElementById("waitingMsg").style.opacity = "1";
+				localStorage.setItem("GameLength", msg.gameLength);
+				setTimeout(function() {
+					/*countdownContainer = document.getElementById("countdownContainer");
+					countdownContainer.style.display = "block";
+					countdownContainer.style.animation = "notify-open 1s forwards";
+					setTimeout(function() {
+						MainCountdown();
+					}, 1000);*/
+					window.location.replace("bootup.html");
+				}, 2000);
+			}
+		} else if (msg.type === "codeTest") {
+			console.log(msg);
+			if (msg.code === enteredCode) {
+				if (msg.response === "Failure!" || msg.gameStatus !== "waiting") {
+					//switchWindows1(CurrentGameID);
+					//document.getElementById("codePrompt").innerHTML = "Reconnect Failed... Returning to creation menu";
+					//localStorage.setItem("activeCode", "");
+					joinTxtOutput.innerHTML = "Join Failed! Double check your code, and try again...";
+					//document.getElementById("submitBtn").style.disabled = "false";
+					//localStorage.setItem("PlayerID", msg.PlayerID);
+				} else {
+					joinTxtOutput.innerHTML = "Join Success! Please wait...";
+					localStorage.setItem("activeCode", msg.code);
+					document.getElementById("join-game-menu").style.animation = "notify-close 2s forwards";
+					setTimeout(function() {
+						/*document.getElementById("usernameMenu").style.display = "block";
+						document.getElementById("usernameMenu").style.animation = "notify-open 2s forwards";*/
+						document.getElementById("waitingMsg").style.display = "block";
+						document.getElementById("waitingMsg").style.animation = "notify-open 2s forwards";
+						socket.emit('clientReq', {type: "addPlayer", gameCode: msg.code, name: sessionStorage.getItem("activeUser")});
+					}, 1000);
+				}
+			}
+		}
+	});
+
+	var joinTxtOutput = document.getElementById("joinLbl2");	
+	function attemptJoin() {
+
+		enteredCode = document.getElementById("codeInput").value;
+		joinTxtOutput.innerHTML = "Attemping to connect with code '" + enteredCode + "' Please wait...";
+		document.getElementById("submitBtn").style.disabled = "true";
+		socket.emit('clientReq', {type: "checkCode", code: enteredCode});
+	}
+	
+	var ActiveCode = localStorage.getItem("activeCode");
+	if (ActiveCode !== null && ActiveCode !== "") {
+		try {
+			ActiveCode = parseInt(ActiveCode);
+			document.getElementById("codeInput").value = ActiveCode;
+			attemptJoin();
+		} catch (ex) {
+			localStorage.setItem("activeCode", null);
+		}
+	}
+	
+	var ActivePlayer = sessionStorage.getItem("activeUser");
+	if (ActivePlayer === null || ActivePlayer === "") {
+		//window.location.replace("index.html");
+	}
+	
+	/*function submitPlayer() {
+		var chosenName = document.getElementById("unameInput").value;
+		socket.emit('clientReq', {type: "addPlayer", gameCode: enteredCode, name: chosenName.toString()});
+		socket.on('clientRes', function(msg) {
+			if (msg.type === "playerResult") {
+				console.log(msg);
+				if (msg.response == "Success!" && msg.code == enteredCode) {
+					document.getElementById("usernameMenu").style.animation = "notify-close 2s forwards";
+					setTimeout(function() {
+						document.getElementById("waitingMsg").style.display = "block";
+						document.getElementById("waitingMsg").style.animation = "notify-open 2s forwards";
+					}, 1000);
+				} else {
+					document.getElementById("joinLbl3").innerHTML = "Name Save Failed! Please try again!";
+				}
+				localStorage.setItem("PlayerID", msg.PlayerID);
+				console.log(msg.PlayerID);
+			}
+		});
+	}*/
+	
+	/*
+	THIS STUFF IS FOR LATER - AFTER SUCCESS
+	setTimeout(function() {
+						document.getElementById("waitingMsg").style.display = "block";
+						document.getElementById("waitingMsg").style.animation = "notify-open 2s forwards";
+					}, 1000);
+					?8 */
+</script>
+<script type="text/javascript" src="assets/scripts/versionInfo.js"></script>
+<script type="text/javascript" src="assets/scripts/audio mixer/Main Menu Mixer.js"></script>
+</html>

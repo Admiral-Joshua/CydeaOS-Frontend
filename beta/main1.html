@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+	<link href="styles/general.css" rel="stylesheet"/>
+	<link href="styles/terminal.css" rel="stylesheet"/>
+	<link href="styles/windows.css" rel="stylesheet" />
+	<link href="styles/filebrowser.css" rel="stylesheet" />
+	<style>
+		p.countdown-text {
+			color: white;
+			font-size: 12pt;
+			width: 90%
+			height: auto;
+			position: absolute;
+			left: 2%;
+			top: 18px;
+		}
+		p.countdown-readout {
+			text-align: center;
+			width: auto;
+			height: auto;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 1.7em;
+			z-index: 1;
+			font-weight: bold;
+			color: cyan;
+		}
+		div.countdown-container {
+			width: 450px;
+			height: 260px;
+			font-size: 48pt;
+			transform: translate(-50%, -50%);
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+		img.countdown-backdrop {
+			width: auto;
+			height: 210px;
+			position: absolute;
+			transform: translate(-50%, -50%);
+			left: 50%;
+			top: 51%;
+			opacity: 0.9;
+		}
+		
+		div.appBar {
+			width: 100%;
+			height: 30px;
+			font-size: 12pt;
+			position: absolute;
+			left: 0%;
+			top: 0%;
+			z-index: 1;
+            background: linear-gradient(to right, rgba(30, 145, 200, 0.5), rgba(10, 110, 200, 0.6));
+            opacity: 0;
+			display: block;
+			animation: open-top-bar 2s 6.5s forwards;
+            overflow: hidden;
+		}
+        div.clock-output {
+            width: auto;
+            height: 80%;
+            color: white;
+            font-size: 14pt;
+            position: relative;
+            left: -10px;
+            top: 4px;
+        }
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        div.appRightTray {
+            width: 15%;
+            height: 100%;
+            position: absolute;
+            left: 85%;
+            top: 0%;
+            //background-color: rgb(100, 100, 100);
+            text-align: right;
+            //background-color: gray;
+        }
+        div.appLeftTray {
+            width: 15%;
+            height: 100%;
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            text-align: left;
+        }
+        div.appCentreTray {
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            transform: translate(-50%, 0%);
+        }
+        em.timeDial {
+            animation: blink 1s infinite;
+        }
+        div.appsButton {
+            font-size: 14pt;
+            border-right: 1px solid rgb(40, 160, 240);
+            cursor: pointer;
+            margin: 0px;
+            width: auto;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        div.appsButton:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        p.appsButton-text {
+            margin: 5px 0px;
+            padding: 0px 8px;
+            color: rgb(220, 220, 255);
+            pointer-events: none;
+        }
+	</style>
+</head>
+
+<body>
+	<div class="background-container">
+		<img class="desktop-background" src="assets/desktops/space3.jpg" />
+	</div>
+
+	<div class="countdown-container" id="countdown"><div class="gameWindow activeWindow"><div class="windowContents"><p class="terminal-title titlebar">CydeaOS - Game Start</p><p class="countdown-text">Game starts in...</p><img class="countdown-backdrop" src="assets/timer.gif"/><p class="countdown-readout" id="countdownReadout">12</p></div></div></div>
+	
+	<!--div class="terminal-container">
+		<div class="gameWindow activeWindow">
+			<div class="windowContents terminalContents">
+				<p class="terminal-title titlebar">Terminal</p>
+				<form id="terminalProcessor">
+
+					<textarea autocomplete="off" autocorrect="off" autocapitalize="off" onKeyDown="handleTerminalInput(event)" spellcheck="false" id="terminal1">Terminal></textarea>
+					<input type="submit" class="invisible" />
+				</form>
+			</div>
+		</div>
+	</div-->					<!--onKeyUp="releaseTerminalKey(event)" onKeyDown="handleTerminalKey(event)"-->
+	
+	<div class="filebrowser-container">
+		<div class="gameWindow activeWindow">
+			<div class="windowContents">
+				<p class="filebrowser-title titlebar">File Browser</p>
+				<div class="folderContents">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="appBar">
+        
+        <div class="appLeftTray">
+            <div class="appsButton">
+                <p class="appsButton-text">Applications</p>
+            </div>
+        </div>
+        
+        <div class="appCentreTray">
+            <p class="activeWindowTitle" id="activeWindowReadout">CydeaOS</p>
+        </div>
+        
+        <div class="appRightTray">
+            <div class="clock-output"><em id="hourReadout">12</em><em class="timeDial">:</em><em id="minReadout">00</em></div>
+        </div>
+	</div>
+    
+    <style>
+        div.appsDrawer {
+            width: 300px;
+            height: auto;
+            background-color: var(--game-active-window);
+            position: absolute;
+            left: 2px;
+            top: 31px;
+            overflow: hidden;
+            display: none;
+        }
+        div.appLaunchBtn {
+            height: 45px;
+            background-color: transparent;
+            color: rgb(0, 160, 255);
+            width: 100%;
+            cursor: pointer;
+        }
+        div.appLaunchBtn:hover {
+            color: cyan;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        img.appIcon {
+            width: 10%;
+            height: 90%;
+            position: relative;
+            pointer-events: none;
+            left: 8px;
+        }
+        em.appName {
+            font-size: 15pt;
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+            pointer-events: none;
+            top: -15px;
+            left: 20px;
+        }
+		
+		
+    </style>
+    
+	
+	
+    <div class="gameWindow appsDrawer" id="appsDrawer">
+        <div onclick="createWindow('terminal')" class="appLaunchBtn terminalLaunch">
+            <img class="appIcon" src="assets/appIcons/Terminal.png"/>
+            <em class="appName">Terminal</em>
+        </div>
+        <div class="appLaunchBtn browserLaunch">
+            <img class="appIcon" src="assets/appIcons/FileBrowser.png">
+            <em class="appName">File Browser</em>
+        </div>
+        <div class="appLaunchBtn editorLaunch">
+            <img class="appIcon" src="assets/appIcons/TextEditor.png">
+            <em class="appName">Text Editor</em>
+        </div>
+    </div>
+	
+	<!--div class="bottom-bar">
+		<button class="terminalButton uiButton">Terminal</button>
+	</div-->
+</body>
+
+<script type="text/javascript" src="scripts/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" src="scripts/socket.io.js"></script>
+
+<script type="text/javascript" src="scripts/util/number.js"></script>
+<script type="text/javascript" src="scripts/terminal-funcs.js"></script>
+<script type="text/javascript" src="scripts/active-window-handler.js"></script>
+
+<script type="text/javascript">
+	const socket = io("https://cydeaos.lunasphere.co.uk:4003");
+
+	//openWindow("countdown");
+	/*setTimeout(function() {
+		closeWindow("countdown");
+	}, 4000);*/
+	
+	var secsLeftGS;
+	var countLoop;
+	
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+	}
+	
+	function startCountdown() {
+		openWindow("countdown");
+		setTimeout(function() {
+			let voiceNum = getRandomInt(1, 2);
+			if (voiceNum == 1) {
+				PlaySFX("resources/sounds2/Countdown Voice 02.mp3");
+			} else {
+				PlaySFX("resources/sounds2/Countdown Voice 01.mp3");
+			}
+			let trackNum = getRandomInt(1, 4);
+			if (trackNum == 1) {
+				StartNewTrack("resources/music2/Blaze of Gunfire - Drifter.mp3");
+			} else if (trackNum == 2) {
+				StartNewTrack("resources/music2/Payday 2 - The Gauntlet.mp3");
+			} else if (trackNum == 3) {
+				StartNewTrack("resources/music2/LazerHawk - Cool Breeze.mp3");
+			} else {
+				//StartNewTrack("resources/music2/Anachronist-04.mp3");
+				StartNewTrack("resources/music2/Irving Force - Overlord.mp3");
+			}
+			secsLeftGS = 12;
+			countLoop = setInterval(updateCountdown, 1085);
+		}, 1000);
+	}
+	
+	function updateCountdown() {
+		if (secsLeftGS > 0) {
+			secsLeftGS -= 1;
+			document.getElementById("countdownReadout").innerHTML = secsLeftGS;
+			if (secsLeftGS == 0) {
+				secsLeftGS = -1;
+				setTimeout(function() {
+					closeWindow("countdown-1");
+					document.getElementsByClassName("appsButton")[0].onclick = toggleAppsDrawer;
+				}, 750);
+				clearInterval(countLoop);
+			}
+		}
+	}
+	var appDrawer = document.getElementById("appsDrawer");
+    function toggleAppsDrawer() {
+        
+        if (appDrawer.style.display == "block") {
+            appDrawer.style.animation = "fade-out .5s forwards";
+            setTimeout(function() {
+                appDrawer.style.display = "none";
+            }, 400);
+        } else {
+            appDrawer.style.display = "block";
+            appDrawer.style.animation = "fade-in .5s forwards";
+        }
+    }
+    
+	setTimeout(() => startCountdown(), 1000);
+	
+</script>
+
+<script type="text/javascript" src="scripts/audio mixer/Audio Mixer - Final.js"></script>
+<script type="text/javascript">
+    function updateClock() {
+        let currentTime = new Date();
+        
+        let minutes = currentTime.getMinutes();
+        let minuteString = "";
+        if (minutes < 10) {
+            minuteString = "0" + minutes.toString();
+        } else {
+            minuteString = minutes.toString();
+        }
+		let hours = currentTime.getHours();
+		let hourString = "";
+		if (hours < 10) {
+			hourString = "0" + hours.toString();
+		} else {
+			hourString = hours.toString();
+		}
+		document.getElementById("hourReadout").innerHTML = hourString;
+        document.getElementById("minReadout").innerHTML = minuteString;
+    }
+    
+    setInterval(updateClock, 3000);
+</script>
+
+</html>

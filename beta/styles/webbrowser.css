@@ -1,0 +1,14 @@
+div.webContent {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+iframe.webBrowser-actual {
+	height: 100%;
+	width: 100%;
+	color: white;
+	border: none;
+	background-color: rgba(0, 0, 0, 0.8);
+}

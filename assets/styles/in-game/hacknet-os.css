@@ -1,0 +1,530 @@
+/* -- STYLING FOR THE TERMINAL -- */
+.terminal-container {
+	width: 33%;
+	height: 100%;
+	border: none;
+	border-radius: 0px;
+	background-color: rgba(20, 18, 0, 0.15);
+	opacity: 0.7;
+	position: absolute;
+	animation: fade-in 1s;
+	transform: none;
+	left: 67%;
+	padding: 5px;
+	top: 0;
+}
+.terminal-container:hover {
+	opacity: 0.9;
+}
+textarea {
+	/* color: rgb(0, 160, 240); */
+	color: orange;
+	opacity: 1;
+	background: transparent;
+	font-size: 10pt;
+	border: none;
+	margin: 2px;
+	/*width: 98.8%;
+	height: 90%; */
+	width: 100%;
+	height: 100%;
+	font-weight: normal;
+	font-family: OCRAEXT;
+	resize: none;
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 1;
+	/*padding: 2px;*/
+}
+
+
+/* OUR NEW "RAM STACK" CONTAINER FOR ALL HACKING / INFO MODULES ON THE LEFT */
+div.ramStack {
+	width: 22%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.9;
+	margin: 0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+p.titlebar {
+	background-color: rgb(180, 110, 0);
+	opacity: 0.9;
+	text-align: left;
+}
+em.titlebar-Text {
+	text-align: left;
+	position: relative;
+	left: 10px;
+}
+
+/*  ---- STYLING FOR THE NEW COMPL DISPLAY INTERFACE --- WILL STORE COMP INFO AND PORTS AND FILE BROWSER IN ONE */
+
+div#CompDisplay {
+	width: 45%;
+	height: 66%;
+	margin: 0px;
+	padding: 5px;
+	position: absolute;
+	left: 22%;
+	top: 0px;
+	background-color: rgba(20, 18, 0, 0.15);
+}
+button.connectBtn {
+	width: 45%;
+	height: 8%;
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	margin: 0px;
+	background-color: rgba(20, 18, 0, 0.15);
+	color: rgb(180, 120, 10);
+	font-family: NovaSquare;
+	font-size: 11.5pt;
+	text-align: left;
+	border: 1px solid rgb(180, 80, 10);
+	border-radius: 5px;
+}
+button.connectBtn02 {
+	top: 59%;
+}
+button.connectBtn03 {
+	top: 68%;
+}
+button.dcBtn {
+	top: 88%;
+	border: 1px solid rgb(180, 20, 10);
+	width: 20%;
+	color: red;
+}
+
+
+/*  -- STYLING FOR THE NMAP OUTPUT -- */
+
+div#compAnalysis {
+	width: 98%;
+	height: 94%;
+	font-size: 14pt;
+	position: absolute;
+	left: 1%;
+	top: 5%;
+	background-color: rgba(15, 8, 0, 0.15);
+	border: none;
+	border-radius: 10px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	//animation: notify-open 1s forwards;
+	transform: none;
+	display: none;
+	z-index: 5;
+	/*border: 1px solid cyan;*/
+}
+div#resultData {
+	/*display: none;*/
+}
+div#analysisProcess {
+	/*display: none;*/
+}
+img#scanImg {
+	width: 680px;
+	height: 680px;
+	object-fit: fill;
+	margin: -340px -340px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+p#analysisText {
+	font-size: 38pt;
+	text-align: center;
+	width: 100%;
+	height: 20%;
+	margin: 0px;
+	position: absolute;
+	left: 0%;
+	top: 40%;
+	color: rgb(220, 160, 0);
+	background: transparent;
+	font-style: italic;
+	opacity: 0;
+}
+p#analysisReadout {
+	width: 80%;
+	height: 200px;
+	margin: 0px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+div#portsContainer {
+	position: relative;
+	top: 80px;
+}
+p.portReadout {
+	width: 60%;
+	font-family: OCRAEXT;
+	position: relative;
+	left: 2.5%;
+	height: 35px;
+	color: white;
+	font-style: normal;
+	font-size: 18pt;
+	text-align: left;
+	margin: 2px;
+	/*border: .5px solid rgb(0, 120, 240);*/
+	/*border: .2px solid orange;*/
+	border: none;
+	white-space: pre;
+}
+.locked {
+	background-color: rgb(160, 0, 80);
+}
+.unlocked {
+	background-color: rgb(0, 85, 160);
+}
+em.portSmallTxt {
+	font-size: 10pt;
+	text-align: right;
+	font-style: normal;
+	white-space: pre;
+}
+
+p#whitelstReadout {
+	position: absolute;
+	top: 90%;
+	left: 15px;
+	font-size: 14pt;
+}
+em.whiteList {
+	font-size: 15pt;
+	font-family: OCRAEXT;
+	font-style: normal;
+	font-weight: bold;
+}
+.lstOpen {
+	color: rgb(0, 185, 255);
+}
+.lstClosed {
+	color: rgb(170, 0, 80);
+}
+
+@keyframes img-zoom-in {
+	0% {
+		width: 0;
+		height: 0;
+		left: 100%;
+		top: 100%;
+	}
+}
+@keyframes img-zoom-in2 {
+	0% {
+		width: 0;
+		height: 0;
+		left: 100%;
+		top: 100%;
+	}
+}
+@keyframes img-zoom-out {
+	100% {
+		width: 0;
+		height: 0;
+		left: 100%;
+		top: 100%;
+	}
+}
+
+/* --- STYLING FOR THE FILE BROWSER --- */
+.fileBrowser-container {
+	//width: 49%;
+	//height: 42%;
+	width: 98%;
+	height: 94%;
+	border: none;
+	border-radius: 10px;
+	border-top-right-radius: 30px;
+	position: absolute;
+	opacity: 0;
+	animation: fade-in 1s .5s forwards;
+	position: absolute;
+	left: 1%;
+	top: 5%;
+	/*background-color: rgba(20, 18, 0, 0.15);*/
+	background: transparent;
+	transform: none;
+	display: none;
+	/*border: 1px solid cyan;*/
+}
+input#currentUrl {
+	width: 70%;
+	height: 20px;
+	position: absolute;
+	left: 14%;
+	top: 2%;
+	background-color: transparent;
+	color: rgb(0, 90, 185);
+	font-size: 12pt;
+	border: 1px solid rgb(0, 90, 185);
+	padding: 5px 5px;
+	border-radius: 10px;
+}
+label {
+	font-size: 11.5pt;
+	position: absolute;
+	left: 2%;
+	top: 2.4%;
+	width: auto;
+	height: 20px;
+}
+input#currentUrl:hover {
+	color: rgb(0, 120, 240);
+}
+div.filesContainer {
+	width: 95%;
+	height: 80%;
+	position: absolute;
+	top: 15%;
+	left: 2.5%;
+	border: none;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	//border: 1px solid rgb(0, 60, 120);
+}
+div.objectContainer {
+	background-color: rgba(0, 30, 80, 0.45);
+	border: 1px solid rgb(0, 50, 120);
+	border-radius: 5px;
+	width: 98%;
+	height: 36px;
+	position: relative;
+	left: 1%;
+	top: 5px;
+	margin: 5px 0px 3px;
+}
+img.objectIcon {
+	width: 31px;
+	height: 30px;
+	position: absolute;
+	top: 2px;
+	left: 9px;	
+	//border: 1px solid rgb(0, 120, 240);
+	border: none;
+	border-radius: 10px;
+}
+em.objectName {
+	font-size: 14pt;
+	position: absolute;
+	left: 50px;
+	width: 65%;
+	top: 6px;
+	color: rgb(0, 80, 150);
+	cursor: pointer;
+}
+em.objectName:hover {
+	color: rgb(0, 120, 240);
+}
+div#disconnectedText {
+	text-align: center;
+	border: none;
+	position: absolute;
+	width: 100%;
+	height: 92%;
+	/*background-color: rgb(10, 10, 10);*/
+	background: transparent;
+	opacity: 0.9;
+	z-index: 10;
+}
+p.disconnectedActual {
+	font-family: NovaSquare;
+	font-size: 24pt;
+	color: rgb(90, 90, 100);
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	background-color: transparent;
+	text-align: center;
+	left: 0;
+	top: 32%;
+	transform: skewY(-1deg);
+}
+
+/* -- STYLING FOR THE CONNECTION MADE DIALOG -- */
+
+div.connectedNode-container {
+	width: 98%;
+	height: 94%;
+	/*background-color: rgba(0, 35, 80, 0.5);*/
+	background-color: rgba(20, 15, 5, 0.3);
+	border-radius: 10px;
+	position: absolute;
+	top: 5%;
+	left: 1%;
+	border: none;
+	font-size: 13.5pt;
+	opacity: 0.7;
+	display: none;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	transform: none;
+	z-index: 5;
+	/*border: 1px solid cyan;*/
+}
+p#compInfo {
+	width: 90%;
+	position: absolute;
+	font-size: 11pt;
+	top: 160px;
+	left: 40px;
+	color: rgb(175, 130, 0);
+	font-size: 18pt;
+}
+p#compName {
+	color: rgb(255, 220, 0);
+	font-size: 24pt;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 190px;
+}
+img#connectedIcon {
+	width: 145px;
+	height: 110px;
+	position: relative;
+	top: 55px;
+	left: 25px;
+	/*border: .5px solid rgb(120, 120, 120);*/
+	object-fit: fill;
+	/*border: 1px solid cyan;*/
+	border-radius: 20px;
+	border: none;
+	
+}
+b {
+	font-weight: normal;
+	color: rgb(255, 220, 0);
+}
+
+/* -- STYLING FOR TIME INFO CARD -- */
+div.timeStat {
+	width: 95%;
+	height: 13%;	
+	background-color: rgba(0, 80, 170, 0.5);
+	border-radius: 10px;
+	position: absolute;
+	top: 71%;
+	left: 2.5%;
+	opacity: 0.7;
+	border: 1px solid rgb(0, 95, 255);
+	transform: none;
+	background-color: rgba(150, 80, 15, 0.5);
+	border: none;
+	border-top-right-radius: 32px;
+	
+}
+div.timeStat:hover {
+	opacity: 1;	
+}
+p.currentTime {
+	font-size: 12pt;
+	font-family: NovaSquare;
+	width: 95%;
+	left: 2.5%;
+	top: -16px;
+	text-align: center;
+	color: rgb(0, 150, 255);
+	color: darkorange;
+}
+p#timeReadout {
+	position: absolute;
+	font-size: 38pt;
+	font-family: OCRAEXT;
+	width: 95%;
+	//left: -20px;
+	top: -12px;
+	text-align: center;
+	color: rgb(0, 180, 255);
+	color: orange;
+}
+em#timeLeft {
+	font-size: 14pt;
+	
+}
+div.timeProgressbar {
+	width: 95%;
+	height: 7%;
+	position: absolute;
+	border: 1px solid rgb(0, 120, 240);
+	top: 82%;
+	left: 2.5%;
+	background-color: rgba(0, 60, 120, 0.4);
+	z-index: 1;
+	opacity: 0.5;
+}
+div#progressActual {
+	height: 100%;
+	background: linear-gradient(to left, rgba(80, 160, 100, 1.0), rgba(255, 160, 0, 0.4));
+}
+
+
+/* --  STYLING FOR THE PLAYER INFO CARD  -- */
+div.playerStat {
+	width: 95%;
+	height: 14%;	
+	background-color: rgba(150, 80, 15, 0.5);
+	border-radius: 10px;
+	position: absolute;
+	top: 85%;
+	left: 2.5%;
+	opacity: 0.7;
+	/*border: 1px solid rgb(0, 95, 255);*/
+	color: orange;
+	transform: none;
+	/*border: 1px solid orange;*/
+	border: none;
+	border-top-right-radius: 32px;
+}
+div.playerStat:hover {
+	opacity: 1;
+}
+img.playerIcon {
+	width: 95px;
+	height: 95px;
+	margin: 5px;
+	position: absolute;
+	left: 5px;
+	border-radius: 10px;
+	//border: 1px solid rgba(0, 120, 240, 0.8);
+	top: 20px;
+}
+p.playerName {
+	font-size: 17pt;
+	font-weight: bold;
+	width: 235px;
+	color: rgb(0, 160, 255);
+	text-align: center;
+	position: absolute;
+	left: 115px;
+	top: -10px;
+	font-family: NovaSquare;
+	color: rgb(240, 210, 0);
+}
+p.playerStatus {
+	font-size: 12pt;
+	font-weight: normal;
+	width: 220px;
+	text-align: left;
+	position: absolute;
+	left: 120px;
+	top: 35px;
+}
+em#lvlReadout {
+	font-style: normal;	
+}
+em#ipReadout {
+	font-style: normal;
+	color: rgb(0, 160, 255);
+	font-size: 10pt;
+	font-family: OCRAEXT;
+	color: rgb(240, 210, 0);
+}

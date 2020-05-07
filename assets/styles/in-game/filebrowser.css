@@ -1,0 +1,98 @@
+.fileBrowser-container {
+	//width: 49%;
+	//height: 42%;
+	width: 720px;
+	height: 360px;
+	border: 1px solid rgb(0, 120, 240);
+	border-radius: 10px;
+	border-top-right-radius: 30px;
+	position: absolute;
+	opacity: 0;
+	animation: ui-open1 1s .5s forwards;
+	left: .5%;
+	top: 60%;
+	background-color: rgba(0, 10, 40, 0.2);
+	transform: skewY(-2deg);
+}
+input#currentUrl {
+	width: 60%;
+	height: 20px;
+	position: absolute;
+	left: 8%;
+	top: 7%;
+	background-color: transparent;
+	color: rgb(0, 90, 185);
+	font-size: 12pt;
+	border: 1px solid rgb(0, 90, 185);
+	border-radius: 2px;
+}
+input#currentUrl:hover {
+	color: rgb(0, 120, 240);
+}
+div.filesContainer {
+	width: 95%;
+	height: 80%;
+	position: absolute;
+	top: 15%;
+	left: 2.5%;
+	border: none;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	//border: 1px solid rgb(0, 60, 120);
+}
+div.objectContainer {
+	background-color: rgba(0, 30, 80, 0.45);
+	border: 1px solid rgb(0, 50, 120);
+	border-radius: 5px;
+	width: 98%;
+	height: 36px;
+	position: relative;
+	left: 1%;
+	top: 5px;
+	margin: 5px 0px 3px;
+}
+img.objectIcon {
+	width: 31px;
+	height: 30px;
+	position: absolute;
+	top: 2px;
+	left: 9px;	
+	//border: 1px solid rgb(0, 120, 240);
+	border: none;
+	border-radius: 10px;
+}
+em.objectName {
+	font-size: 14pt;
+	position: absolute;
+	left: 50px;
+	width: 65%;
+	top: 6px;
+	color: rgb(0, 80, 150);
+	cursor: pointer;
+}
+em.objectName:hover {
+	color: rgb(0, 120, 240);
+}
+div#disconnectedText {
+	text-align: center;
+	border: none;
+	position: absolute;
+	width: 100%;
+	height: 92%;
+	background-color: rgb(10, 10, 10);
+	opacity: 0.9;
+	z-index: -1;
+}
+p.disconnectedActual {
+	font-family: NovaSquare;
+	font-size: 24pt;
+	color: rgb(90, 90, 100);
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	background-color: transparent;
+	text-align: center;
+	left: 0;
+	top: 32%;
+	transform: skewY(-1deg);
+}

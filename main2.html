@@ -1,0 +1,318 @@
+<html>
+
+<head>
+	<link href="assets/styles/general.css" rel="stylesheet" />
+	<link href="assets/animations/fades-01.css" rel="stylesheet" />
+	<link href="assets/animations/modules-01.css" rel="stylesheet" />
+	<link href="assets/animations/flashes-01.css" rel="stylesheet" />
+	<title>CydeaOS - Reconnecting...</title>
+	<style>
+		div.gameEnd {
+			width: 45%;
+			height: 28%;
+			position: absolute;
+			left: 27.5%;
+			top: 30%;
+			animation: notify-open 1s forwards;
+			background-color: rgba(0, 60, 120, 0.4);
+			color: rgb(0, 120, 240);
+			font-size: 12pt;
+			font-family: OCRAEXT;
+			border: 1px solid rgb(0, 120, 240);
+			border-radius: 20px;
+			border-top-left-radius: 40px;
+			border-bottom-right-radius: 30px;
+			z-index: 5;
+			display: none;
+		}
+		h2.endText {
+			font-size: 32pt;
+			margin: 15px;
+		}
+		h3.endTextSmall {
+			font-size: 14pt;
+			margin: 15px 10px 10px 10px;
+			color: rgb(0, 160, 255);
+		}
+		em#eliminatedReadout {
+			color: gold;
+			font-size: 14pt;
+			font-weight: bold;
+			font-style: normal;
+		}
+		p#winnerOut {
+			text-align: center;
+			margin: 0;
+			width: 95%:
+			position: relative;
+			left: 2.5%;
+			font-size: 24pt;
+			font-family: NovaSquare;
+			font-weight: bold;
+		}
+	
+		div.mainCountdown {
+			width: 45%;
+			height: 22.5%;
+			position: absolute;
+			left: 27.5%;
+			top: 30%;
+			//background-color: rgba(0, 10, 20, 0.8);
+			background-color: transparent;
+			margin: 10px;
+			//border-bottom-left-radius: 30px;
+			//border-top-right-radius: 35px;
+			//border: 2px solid rgb(0, 120, 240);
+			overflow: hidden;
+			//display: none;
+			animation: notify-open 1s forwards;
+		}
+		img.countdownBg {
+			width: 100%;
+			height: 100%;
+			object-fit: fill;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: -2;
+		}
+		p.titlebar {
+			width: 93.5%;	
+			border: none;
+			border-radius: 0;
+			transform: skewX(4deg);
+			left: 2px;
+		}
+		p.gameStatus {
+			font-size: 12pt;
+			font-weight: normal;
+			position: relative;
+			left: 15px;
+			top: -5px;
+		}
+		em#statusReadout {
+			position: relative;
+			font-style: normal;
+			font-weight: normal;
+			left: 10px;
+			color: rgb(80, 180, 255);
+			animation: flash 2s infinite;
+		}
+		p#countdownText {
+			width: 100%;
+			height: 80%;
+			//background-color: rgba(0, 10, 20, 0.35);
+			color: rgb(200, 220, 255);
+			font-size: 58pt;
+			text-align: center;
+			position: relative;
+			top: -60px;
+		}
+		div.eventLog {
+			width: 98%;
+			height: 33%;
+			position: absolute;
+			left: 1%;
+			top: 66%;
+			margin: 5px;
+			border: 1.5px solid rgb(0, 120, 30);
+			border-radius: 10px;
+			border-bottom-right-radius: 80px;
+			border-top-left-radius: 30px;
+		}
+		p.eventLog-title {
+			font-size: 12pt;
+			position: relative;
+			left: 10px;
+			margin: 5px;
+		}
+		hr.event-divider {
+			border: .5px solid rgb(0, 120, 240);
+			width: 95%;
+			margin: 0px;
+			position: relative;
+			left: 2.5%;
+		}
+		textarea#eventLogOutput {
+			background-color: black;
+			color: white;
+			padding: 5px;
+			width: 98%;
+			position: relative;
+			left: 1%;
+			height: 87%;
+			border: none;
+			overflow-y: hidden;
+			resize: none;
+			border-radius: 10px;
+			border-bottom-right-radius: 80px;
+			border-top-left-radius: 10px;
+			font-size: 14pt;
+			opacity: 0;
+			animation: fade-in 2s 1s forwards;
+			
+		}
+		@keyframes eventFlash {
+			25% {
+				border-color: gold;
+			}
+			50% {
+				border-color: rgb(0, 120, 30);
+			}
+			75% {
+				border-color: gold;
+			}
+		}
+		div.countdown-container {
+			background-color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+<div id="ScaledContent">
+	<div class="mainCountdown">
+    	<img class="countdownBg" src="assets/CountdownBlock.png" />
+		<p class="titlebar"><em class="titlebar-Text">Event Viewer - Server Access Time</em></p>
+		<p class="gameStatus">Status:<em id="statusReadout">Game Starts In...</em></p>
+		<div class="countdown-container">
+			<p id="countdownText"> 00 : 00 : 00 </p>
+		</div>
+	</div>
+    <div class="eventLog">
+    	<p class="eventLog-title">Event Logs</p>
+        <hr class="event-divider"/>
+        <textarea disabled id="eventLogOutput"></textarea>
+    </div>
+	<div id="gameEnd" class="gameEnd">
+		<h2 class="endText">The Game Has Now Ended!</h2>
+		<h3 class="endTextSmall">Thanks for playing in CydeaOS! Sadly we lost <em id="eliminatedReadout">0</em> players in this game!<br/>
+		But congratulations to our survivors!</h3>
+		<p id="winnerOut"></p>
+	</div>
+</div>
+<!--script type="text/javascript" src="assets/scripts/scalePage.js"></script-->
+<script type="text/javascript" src="assets/scripts/server/countdown-main.js"></script>
+<script type="text/javascript" src="assets/scripts/server/event-log.js"></script>
+<script type="text/javascript" src="assets/socket.io.js"></script>
+
+<script type="text/javascript">
+	var CurrentGameID;
+	
+	var socket = io.connect("https://cydeaos.lunasphere.co.uk:4003", {secure: true, reconnect: false, rejectUnauthorized: false}); 		// FOR WHEN ONLINE
+	//var socket = io.connect("http://127.0.0.1:4003");
+	//socket.emit("serverReq", {type: "checkCode", gameCode: localStorage.getItem("activeCode")});
+	
+	socket.on("serverRes", function(msg) {
+		if (msg.type == "logEvent") {
+			if (msg.code == CurrentGameID) {
+				LogEvent(msg.text);
+			}
+		} else if (msg.type == "endGame") {
+			LogEvent("Game Has Ended!");
+			var WinnerOutput = document.getElementById("winnerOut");
+			WinnerOutput.innerHTML = "";
+			if (msg.winners !== null && msg.winners.length !== 0) {
+				for (x = 0; x < msg.winners.length; x++) {
+					WinnerOutput.innerHTML = WinnerOutput.innerHTML + msg.winners[x].username;
+				}
+			}
+			if (msg.EliminatedNo !== null) {
+				document.getElementById("eliminatedReadout").innerHTML = msg.EliminatedNo.toString();
+			}
+			ShowGameEnd();
+		}
+		if (msg.timeLeft != null && msg.timeLeft != "null" && msg.timeLeft != "undefined") {
+			//console.log(msg.timeLeft);
+			SyncTimer(msg.timeLeft);
+		}
+	});
+	
+	function ShowGameEnd() {
+		var GameEndScreen = document.getElementById("gameEnd");
+		GameEndScreen.style.animation = "notify-open 2s forwards";
+		setTimeout(function() {
+			GameEndScreen.style.display = "block";
+		}, 1000);
+		document.getElementsByClassName("mainCountdown")[0].style.animation = "notify-close 2s forwards";
+	}
+	
+	socket.on("gameRes", function(msg) {
+		console.log(msg);
+		if (msg.code == CurrentGameID) {
+			if (msg.type == "timerStart") {
+				StartTimer();
+				LogEvent("Game Started Successfully!");
+				ChangeStatus("Game Active", "information");
+				if (msg.threeIPs != null) {
+					for (i=0; i < msg.threeIPs.length; i++) {
+						//LogEvent("IP Reveal: '" + msg.threeIPs[i].toString() + "'");
+						LogEvent(msg.threeIPs[i].toString());
+					}
+				}
+				setTimeout(function() {
+					if (CurrentGameID != null) {
+						socket.emit("musicReq", {type: "getTrack", gameCode: CurrentGameID});
+					}
+				}, 500);
+			}
+		}
+	});
+	LogEvent("Connecting to Game server ... Please wait ... ");
+	ChangeStatus("Please wait... ", "default");
+	if (localStorage.getItem("activeCode") != null && localStorage.getItem("activeCode") != "" && localStorage.getItem("activeCode") != "null") {
+		CurrentGameID = localStorage.getItem("activeCode");
+			socket.emit('serverReq', {type:"checkCode", code: CurrentGameID});
+			socket.on('serverRes', function(response) {
+				setTimeout(function() {
+					if (response.type == "codeTest") {
+						if (response.code === CurrentGameID) {
+							if (response.response === "Failure!") {
+								localStorage.setItem("activeCode", "");
+								ChangeStatus("CONNECTION ERROR", "error");
+								//window.location.replace("index.html");
+							} else {
+								console.log("Game Reconnect Successful!");
+								SetTime(response.GameLength, "final");
+								LogEvent("Waiting for players to load in...");
+								document.title = "CydeaOS - In-Game (Host)";
+								// NEED TO ADD / REWRITE SOME STUFF TO SHOW UP CURRENTLY CONNECTED PLAYERS ON-SCREEN
+								
+								/*if (response.playerObjects.length > 0) {
+									for (y = 0; y < response.playerObjects.length; y++) {
+										console.log(response.playerObjects[y]);
+										AddPlayer(response.playerObjects[y].username, response.playerObjects[y].status);
+									}
+								}*/
+							}
+							console.log(response);
+						}
+					}
+				}, 1000);
+			});
+		
+		//document.getElementById("creationBtn").style.disabled = true;
+		//document.getElementById("codePrompt").innerHTML = "Attemping to reconnect to the following gamecode...";
+		//setTimeout(function() {switchWindows(CurrentGameID)}, 600);
+
+			
+		//}, 1000);
+	} else {
+		setTimeout(function() {
+			ChangeStatus("INVALID GAME CODE SPECIFIED", "error");
+			document.title = "CydeaOS - Connection Error";
+			LogEvent("Unrecognised Game Code... Unable to continue!");
+			setTimeout(function() {
+				LogEvent("Please return to the Main Menu and try to host another game!");
+				setTimeout(function() {
+					LogEvent("If the problem persists, feel free to let me know at admiraljrn@gmail.com");
+				}, 4000);
+			}, 1500);
+		}, 2000);
+	}
+</script>
+
+<script type="text/javascript" src="assets/scripts/server/Audio Mixer - Final.js"></script>
+</body>
+
+</html>

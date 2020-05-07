@@ -1,0 +1,127 @@
+div#compAnalysis {
+	width: 400px;
+	height: 250px;
+	font-size: 14pt;
+	position: absolute;
+	left: 78%;
+	top: 175px;
+	background-color: rgba(0, 35, 80, 0.5);
+	border: 1px solid rgb(0, 95, 255);
+	border-radius: 10px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	//animation: notify-open 1s forwards;
+	transform: skewY(2deg);
+	display: none;
+}
+div#resultData {
+	//display: none;
+}
+div#analysisProcess {
+	//display: none;
+}
+img#scanImg {
+	width: 360px;
+	height: 360px;
+	object-fit: fill;
+	margin: 0px;
+	position: absolute;
+	left: 20px;
+	top: -40px;
+}
+p#analysisText {
+	font-size: 24pt;
+	text-align: center;
+	width: 320px;
+	height: 50px;
+	margin: 0px;
+	position: absolute;
+	left: 40px;
+	top: 110px;
+	color: rgb(10, 160, 220);
+	background-color: rgba(0, 25, 60, 0.3);
+	font-style: italic;
+	opacity: 0;
+}
+p#analysisReadout {
+	width: 350px;
+	height: 200px;
+	margin: 0;
+	position: absolute;
+	left: 25px;
+	top: 30px;
+}
+div#portsContainer {
+	position: relative;
+	top: 40px;
+}
+p.portReadout {
+	width: 95%;
+	font-family: OCRAEXT;
+	position: relative;
+	left: 2.5%;
+	height: 35px;
+	color: white;
+	font-style: normal;
+	font-size: 18pt;
+	text-align: left;
+	margin: 0;
+	border: .5px solid rgb(0, 120, 240);
+	white-space: pre;
+}
+.locked {
+	background-color: rgb(160, 0, 80);
+}
+.unlocked {
+	background-color: rgb(0, 85, 160);
+}
+em.portSmallTxt {
+	font-size: 10pt;
+	text-align: right;
+	font-style: normal;
+	white-space: pre;
+}
+
+p#whitelstReadout {
+	position: relative;
+	top: 35px;
+	left: 10px;
+	font-size: 14pt;
+}
+em.whiteList {
+	font-size: 15pt;
+	font-family: OCRAEXT;
+	font-style: normal;
+	font-weight: bold;
+}
+.lstOpen {
+	color: rgb(0, 185, 255);
+}
+.lstClosed {
+	color: rgb(170, 0, 80);
+}
+
+@keyframes img-zoom-in {
+	0% {
+		width: 0;
+		height: 0;
+		left: 200px;
+		top: 140px;
+	}
+}
+@keyframes img-zoom-in2 {
+	0% {
+		width: 0;
+		height: 0;
+		left: 200px;
+		top: 140px;
+	}
+}
+@keyframes img-zoom-out {
+	100% {
+		width: 0;
+		height: 0;
+		left: 200px;
+		top: 140px;
+	}
+}

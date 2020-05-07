@@ -1,0 +1,52 @@
+div.timeStat {
+	width: 340px;
+	height: 125px;
+	background-color: rgba(0, 80, 170, 0.5);
+	border-radius: 10px;
+	position: absolute;
+	top: 20px;
+	left: 81%;
+	opacity: 0.7;
+	border: 1px solid rgb(0, 95, 255);
+	transform: skewY(2deg);
+}
+div.timeStat:hover {
+	opacity: 1;	
+}
+p.currentTime {
+	font-size: 12pt;
+	font-family: NovaSquare;
+	width: 95%;
+	left: 2.5%;
+	top: -16px;
+	text-align: center;
+	color: rgb(0, 150, 255);
+}
+p#timeReadout {
+	position: absolute;
+	font-size: 38pt;
+	font-family: OCRAEXT;
+	width: 95%;
+	//left: -20px;
+	top: -12px;
+	text-align: center;
+	color: rgb(0, 180, 255);
+}
+em#timeLeft {
+	font-size: 14pt;
+}
+div.timeProgressbar {
+	width: 95%;
+	height: 7%;
+	position: absolute;
+	border: 1px solid rgb(0, 120, 240);
+	top: 82%;
+	left: 2.5%;
+	background-color: rgba(0, 60, 120, 0.4);
+	z-index: 1;
+	opacity: 0.5;
+}
+div#progressActual {
+	height: 100%;
+	background: linear-gradient(to left, rgba(0, 120, 255, 0.4), rgba(0, 180, 255, 1.0));
+}

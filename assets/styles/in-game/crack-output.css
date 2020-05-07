@@ -1,0 +1,21 @@
+div#crackView {
+	width: 380px;
+	height: 260px;
+	position: absolute;
+	left: 2%;
+	top: 27%;
+	background-color: rgba(0, 35, 80, 0.5);
+	transform: skewY(-2deg);
+	border-radius: 10px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	display: none;
+}
+#crackPlayer {
+	border-radius: 10px;
+	background-color: transparent;
+	opacity: 0.7;
+}
+#playerSource {
+	opacity: 0.7;
+}

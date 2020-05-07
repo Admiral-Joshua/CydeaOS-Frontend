@@ -1,0 +1,49 @@
+p.titlebar {
+	color: rgb(220, 220, 230);
+	--game-active-title: rgb(10, 30, 80);
+	--game-inactive-title: rgb(40, 40, 42);
+	background-color: var(--game-active-title);
+	font-size: 10pt;
+	width: 100%;
+	height: 20px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	padding: 0px;
+	border-top-right-radius: 20px;
+	text-align: left;
+}
+p.titlebar:hover {
+	color: white;
+}
+div.gameWindow {
+	--game-active-window: rgb(10, 40, 70);
+	--game-inactive-window: rgb(20, 20, 22);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 5px;
+	border-top-right-radius: 25px;
+}
+div.windowContents {
+	opacity: 0;
+}
+.activeWindow {
+	background-color: var(--game-active-window);
+}
+.inactiveWindow {
+	background-color: var(--game-inactive-window);
+}
+p.closeButton {
+	width: 20px;
+	height: 22px;
+	position: absolute;
+	left: calc(100% - 24px);
+	top: -4px;
+	color: rgb(0, 160, 240);
+	font-size: 10pt;
+	z-index: 1;
+	cursor: pointer;
+	
+}

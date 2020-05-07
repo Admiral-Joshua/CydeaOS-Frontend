@@ -1,0 +1,61 @@
+div#countdownContainer {
+	width: 40%;
+	height: 30%;
+	background-color: rgba(0, 60, 120, 0.4);
+	color: rgb(0, 120, 240);
+	border-radius: 10px;
+	border-bottom-right-radius: 40px;
+	border-top-left-radius: 30px;
+	position: absolute;
+	top: 35%;
+	left: 30%;
+	display: none;
+	opacity: 0;
+}
+p#countReadout {
+	width: 100%;
+	height: 80%;
+	text-align: center;
+	font-size: 36pt;
+	position: absolute;
+	left: 0;
+	top: 20%;
+	opacity: 0;
+	//animation: count1 1s infinite;
+}
+@keyframes count1 {
+	0% {
+		font-size: 42pt;
+		opacity: 0;
+		top: 20%;
+	}
+	40% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		font-size: 90pt;
+		opacity: 0;
+		top: 12%;
+	}
+}
+@keyframes count2 {
+	0% {
+		font-size: 42pt;
+		opacity: 0;
+		top: 20%;
+	}
+	40% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		font-size: 90pt;
+		opacity: 0;
+		top: 10%;
+	}
+}

@@ -1,0 +1,8 @@
+div.filebrowser-container {
+	width: 560px;
+	height: 340px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 500px;
+	top: 400px;
+}

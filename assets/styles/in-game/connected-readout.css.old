@@ -1,0 +1,36 @@
+div.connectedNode-container {
+	width: 340px;
+	height: 130px;
+	background-color: rgba(0, 35, 80, 0.5);
+	border-radius: 10px;
+	position: absolute;
+	top: 325px;
+	left: 10px;
+	border: 1px solid rgb(0, 95, 255);
+	font-size: 13.5pt;
+	opacity: 0.7;
+	display: none;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	transform: skewY(-2deg);
+}
+p#compInfo {
+	width: 90%;
+	position: relative;
+	font-size: 11pt;
+	top: -70px;
+	left: 95px;
+}
+img#connectedIcon {
+	width: 85px;
+	height: 66px;
+	position: relative;
+	top: 15px;
+	left: 4px;
+	//border: .5px solid rgb(120, 120, 120);
+	object-fit: fill;
+}
+b {
+	font-weight: normal;
+	color: rgb(0, 180, 255);
+}

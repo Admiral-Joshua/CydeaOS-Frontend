@@ -1,0 +1,22 @@
+div.terminal-container {
+	width: 580px;
+	height: 340px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 500px;
+	top: 400px;
+    overflow: hidden;
+}
+textarea.consoleInput {
+	color: white;
+	font-size: 10pt;
+	font-family: OCRAEXT;
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	width: 99.5%;
+	height: calc(100% - 24px);
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
+	resize: none;
+}

@@ -1,0 +1,40 @@
+div.connectedNode-container {
+	width: 340px;
+	height: 145px;
+	background-color: rgba(0, 35, 80, 0.5);
+	border-radius: 10px;
+	position: absolute;
+	top: 310px;
+	left: 10px;
+	border: 1px solid rgb(0, 95, 255);
+	font-size: 13.5pt;
+	opacity: 0.7;
+	display: none;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	transform: skewY(-2deg);
+}
+p#compInfo {
+	width: 73%;
+	height: 90%;
+	position: absolute;
+	top: 11%;
+	left: 27%;
+	font-size: 11pt;
+	/*white-space: nowrap;*/
+	overflow-wrap: break-word;
+}
+img#connectedIcon {
+	width: 23%;
+	height: 90%;
+	position: absolute;
+	top: 10%;
+	left: 5px;
+	//border: .5px solid rgb(120, 120, 120);
+	object-fit: contain;
+	text-align: center;
+}
+b {
+	font-weight: normal;
+	color: rgb(0, 180, 255);
+}

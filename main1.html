@@ -1,0 +1,1111 @@
+<html>
+<head>
+	<title>CydeaOS - In-Game</title>
+	<link href="assets/styles/general.css" rel="stylesheet" />
+    <link href="assets/animations/fades-01.css" rel="stylesheet"/>
+    <link href="assets/animations/modules-01.css" rel="stylesheet"/>
+	
+	<!-- The In Game Elements Styling -->
+	<link href="assets/styles/in-game/terminal.css" rel="stylesheet"/>
+	<link href="assets/styles/in-game/filebrowser.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/connected-readout.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/timer.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/player-info.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/comp-analysis.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/crack-output.css" rel="stylesheet" />
+	<link href="assets/styles/in-game/fileViewer.css" rel="stylesheet"/>
+	
+	<!-- THE DESKTOP 'WALLPAPER' STYLING -->
+    <style>
+		img.backgroundImage {
+			width: 100%;
+			height: 100%;
+			object-fit: fill;	
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: -2;
+			opacity: 0.2;
+		}
+		div#gameOver {
+			width: 40%;
+			height: 35%;
+			position: absolute;
+			top: 40%;
+			left: 30%;
+			background-color: rgba(0, 60, 120, 0.3);
+			color: rgb(0, 120, 240);
+			border: 1px solid rgb(0, 120, 240);
+			border-radius: 20px;
+			border-bottom-right-radius: 50px;
+			border-top-left-radius: 35px;
+			z-index: 8;
+			display: none;
+		}
+		div#gameWin {
+			width: 40%;
+			height: 35%;
+			position: absolute;
+			top: 40%;
+			left: 30%;
+			background-color: rgba(0, 60, 120, 0.3);
+			color: rgb(0, 120, 240);
+			border: 1px solid rgb(0, 120, 240);
+			border-radius: 20px;
+			border-bottom-right-radius: 50px;
+			border-top-left-radius: 35px;
+			z-index: 8;
+			display: none;
+		}
+		p.gameOverTxt1 {
+			font-size: 36pt;
+			text-align: center;
+			margin: 5px 0px;
+			color: rgb(0, 120, 240);
+		}
+		p.gameOverTxt2 {
+			font-size: 15pt;
+			text-align: center;
+			color: rgb(0, 90, 150);
+		}
+		p.gameOverStats {
+			font-size: 16pt;
+			text-align: center;
+			color: cyan;
+		}
+		em.statReadout {
+			font-style: normal;
+			color: gold;
+		}
+		@keyframes shake-animation {
+			25% {
+				position: relative;
+				left: -18px;
+			}
+			75% {
+				position: relative;
+				left: 18px;
+			}
+		}
+	</style>
+    <!-- Styling for Additional Elements - This is mostly elements that are either too insignificant for their own styling sheet or I'm just too lazy to move it-->
+	<style>
+		div#systemCrash {
+			display: none;
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			margin: 0px;
+			left: 0px;
+			top: 0px;
+			background-color: black;
+			color: white;
+			font-size: 18pt;
+			white-space: pre;
+			font-family: OCRAEXT;
+		}
+
+		p.systemCrashText {
+			background: transparent;
+			width: 85%;
+			height: 85%;
+			position: absolute;
+			top: 7.5%;
+			left: 7.5%;
+			margin: 0px;
+			padding: 0px;
+			color: white;
+			font-size: 17pt;
+			font-family: OCRAEXT;
+			white-space: pre;
+		}
+		#incomingConn {
+			//border: 1px solid red;
+			margin: 0px;
+			width: 100%;
+			position: absolute;
+			left: 0px;
+			top: 9%;
+			opacity: 0.85;
+			color: red;
+			padding: 0;
+			background-color: rgba(255, 20, 20, 0.2);
+			display: none;
+			overflow: hidden;
+			//animation: incomingFlash 2s forwards, incomingExit 1s 3s forwards;
+		}
+		p.incomingText {
+			text-align: center;
+			color: red;
+			font-size: 34pt;
+			font-weight: bold;
+			height: 40px;
+			padding: 0px;
+		}
+		p.gibberish {
+			font-size: 14pt;
+			text-align: left;
+			overflow: hidden;
+			color: red;
+			font-family: OCRAEXT;
+			margin: 0;
+			padding: 2px;
+		}
+		@keyframes incomingFlash2 {
+			0% {
+				top: 0;
+			}
+			8% {
+				opacity: 0;
+				//height: 0;
+			}
+			16% {
+				opacity: 0.8;
+			}
+			24% {
+				opacity: 0;
+			}
+			32% {
+				opacity: 0.8;
+			}
+			40% {
+				opacity: 0;
+			}
+			48% {
+				opacity: 0.8;
+			}
+			56% {
+				opacity: 0;
+			}
+			64% {
+				opacity: 0.8;
+			}
+		}
+		@keyframes incomingExit2 {
+			0% {
+				opacity: 0.8;
+			}
+			33% {
+				opacity: 0.8;
+			}
+			100% {
+				opacity: 0;
+				top: 0;
+			}
+		}
+		@keyframes incomingFlash {
+			0% {
+				top: 0;
+			}
+			8% {
+				opacity: 0;
+			}
+			16% {
+				opacity: 0.8;
+			}
+			24% {
+				opacity: 0;
+			}
+			32% {
+				opacity: 0.8;
+			}
+			40% {
+				opacity: 0;
+			}
+			48% {
+				opacity: 0.8;
+			}
+			56% {
+				opacity: 0;
+			}
+			64% {
+				opacity: 0.8;
+			}
+		}
+		@keyframes incomingExit {
+			0% {
+				opacity: 0.8;
+			}
+			33% {
+				opacity: 0.8;
+			}
+			100% {
+				opacity: 0;
+				top: 0;
+			}
+		}
+		.fileBrowser-container:hover {
+			opacity: 1;
+		}
+		div.memezVirus {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background: transparent;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			background-color: rgba(255, 0, 0, 0.2);
+			opacity: 0.2;
+		}
+		div.memeWindow {
+			text-align: center;
+			width: 350px;
+			height: 380px;
+			border: 1px solid rgba(0, 160, 240, 0.8);
+			border-radius: 10px;
+			background-color: rgba(0, 60, 120, 0.4);
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 30px;
+		}
+		#virusPic {
+			width: 90%;
+			height: 90%;
+			opacity: 0.9;
+			//animation: memeFlash1 3s forwards;
+			object-fit: fill;
+				
+		}
+		@keyframes memeFlash1 {
+			0% {
+				opacity: 0;	
+			}
+			50% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+		@keyframes memeFlash2 {
+			0% {
+				opacity: 0;	
+			}
+			50% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+		
+		@keyframes ui-flip {
+			50% {
+				transform: 	
+			}
+		}
+		a.goHomeLink {
+			width: 90%;
+			height: 10%;
+			position: absolute;
+			top: 90%;
+			left: 5%;
+			text-align: center;
+			font-size: 12pt;
+			color: rgb(0, 160, 240);
+		}
+	</style>
+</head>
+
+<body onkeydown="handleBodyKey(event)"><!--onkeydown="handleBodyKey(event)"-->
+	<img class="backgroundImage" src="assets/binary-8.jpg" />
+	<div id="ScaledContent">
+		<div class="playerStat">
+			<img id="playerIco" class="playerIcon" src="assets/blank-person.png">
+			<p id="nameReadout" class="playerName">PLAYERNAME</p>
+			<p class="playerStatus">Connected to: <em id="ipReadout">localhost</em><br/>Whitelist Lvl: <em id="lvlReadout">0</em></p>
+		</div>
+		
+		<div class="timeStat">
+			<p class="currentTime" id="timeContainer">Time Elapsed:<p id="timeReadout">00:00<em id="timeLeft"> / N:A</em></p></p>
+			<div class="timeProgressbar">
+				<div id="progressActual"></div>
+			</div>
+		</div>
+		
+		<div class="terminal-container" id="terminal-container">
+			<p class="terminal-title titlebar"><em class="titlebar-Text">CydeaOS - Terminal</em><em onClick="toggleTerminal()" class="closeBtn">X</em></p>
+			<form id="terminalProcessor">
+			<!--onKeyUp="releaseTerminalKey(event)" onKeyDown="handleTerminalKey(event)"-->
+			<textarea autocomplete="off" autocorrect="off" autocapitalize="off" onKeyDown="handleTerminalInput(event)" spellcheck="false" id="terminal1">Terminal></textarea>
+			<input type="submit" class="invisible"></input>
+			</form>
+		</div>
+		
+		<div id="connectedDialog" class="connectedNode-container">
+			<p class="titlebar"><em class="titlebar-Text">Connected To:</em></p>
+			<img id="connectedIcon"></img>
+			<p id="compInfo">Name:<br/>IP:<br/>Owner:</br>Security Level:</p>
+		</div>
+		
+		<div id="compAnalysis">
+			<p class="titlebar"><em class="titlebar-Text">Security Analysis</em><em onClick="hideNmap()" class="closeBtn">X</em></p>
+			<div id="analysisProcess">
+				<img id="scanImg" src="assets/puzzle2.gif" />
+				<p id="analysisText">Analyzing System...</p>
+			</div>
+			<div id="resultData">
+				<p id="analysisReadout">Port Status:<br/></p>
+				<div id="portsContainer">
+					<p class="portReadout locked"> Port#22 - SSH <em class="portSmallTxt">		-LCKD</em></p>
+					<p class="portReadout unlocked"> Port#57 - DNS <em class="portSmallTxt">	-OPND</em></p>
+					<p class="portReadout locked"> Port#6008 - BTrt<em class="portSmallTxt">	-LCKD</em></p>
+				</div>
+				<p id="whitelstReadout">Associated WhiteList:<em class="whiteList lstClosed"> - UNLOCKED - </em></p>
+			</div>
+		</div>
+		
+		<div id="fileBrowser-container" class="fileBrowser-container">
+			<input type="text" id="currentUrl" value=" localhost/" readonly></input>
+			<p class="filebrowser-title titlebar"><em class="titlebar-Text">CydeaOS - Browser</em></p>
+			<div id="disconnectedText"><p class="disconnectedActual">DISCONNECTED</p></div>
+			<div id="filesContainer" class="filesContainer">
+				<div class="objectContainer"><img class="objectIcon" src="assets/CyberLogo1 - Transparent.png"/><em class="objectName"> - EXAMPLE FILE</em></div>
+			</div>
+		</div>
+		
+		<div id="incomingConn">
+			<p class="gibberish gTop">010011001100110111010011100100110011001010011001100110110100110011001101110100111010101011010101011010101010011101010101101010101101010101110100111010101011010011001100110111010011101010101101010101101010010101011010101010101101001100110011011101001110101010110101010110101001010101101010</p>
+			<p class="incomingText">---  ALERT - INCOMING CONNECTION  ---</p>
+			<p class="gibberish gBot">010011000100110011001101101001100110011011101001110101010110101010110010011001100110110100110011001101110100111010101011010101011010101010011101010101101010101101010101010100111010101011010101011010101100110110100110011001101110100111010101011010101011010101010011101010101101010101101010</p>
+		</div>
+		
+		<div id="crackView" style="display: none;">
+			<p class="titlebar"><em id="crackingToolName" class="titlebar-Text">CR$CK N$M3</em><!--em onClick="hideNmap()" class="closeBtn">X</em--></p>
+			<video id="crackPlayer" width="320" height="240" autoplay>
+				<source id="playerSource" src="" type="video/mp4">
+			</video>
+		</div>
+		
+		
+		<div id="fileViewer">
+			<p class="filebrowser-title titlebar"><em class="titlebar-Text" id="textEdit-title">TextEdit: </em><em onClick="ForceHideFileViewer()" class="closeBtn">X</em></p>
+			<div class="contextMenu">
+				<p class="contextItem itm01" onclick="OpenContextMenu(0)">FILE</p>
+				<p class="contextItem itm02" onclick="OpenContextMenu(1)">HELP</p>
+				<div class="contextMenu2 itm01menu"><p class="menuItem" onclick="NewFile()">New</p><p onclick="SaveFile()" class="menuItem">Save</p></div>
+				<div class="contextMenu2 itm02menu"><p class="menuItem">About</p></div>
+			</div>
+			
+			<textarea id="fileContents" spellcheck="false" autocomplete="false"></textarea>
+		</div>
+		
+		<div id="gameOver">
+			<p class="gameOverTxt1">Game Over</p>
+			<p class="gameOverTxt2">Sorry, you've been eliminated from the game. But look on the bright side:</p>
+			<p class="gameOverStats">You eliminated: <em class="statReadout" id="playersElim">EXAMPLE</em> Players<br/>
+			You hacked: <em class="statReadout" id="compsHacked">EXAMPLE</em> Computers<br/>
+			You broke through: <em class="statReadout" id="whitelistHacked">EXAMPLE</em> Whitelist Servers</p><br/>
+			<a class="goHomeLink" href="https://cydeaos.lunasphere.co.uk">Go Home</a>
+		</div>
+		
+		<div id="gameWin">
+			<p class="gameOverTxt1">You Won!</p>
+			<p class="gameOverTxt2">Congratulations! You managed to survive through the full game time! You also managed to:</p>
+			<p class="gameOverStats">Eliminate: <em class="statReadout" id="playersElim2">EXAMPLE</em> Players<br/>
+			Hack: <em class="statReadout" id="compsHacked2">EXAMPLE</em> Computers<br/>
+			Brake Through: <em class="statReadout" id="whitelistHacked2">EXAMPLE</em> Whitelist Servers</p><br/>
+			<a class="goHomeLink" href="https://cydeaos.lunasphere.co.uk">Go Home</a>
+		</div>
+		
+        
+        <div class="memezVirus">
+			<!--div class="memeWindow">
+				<p class="filebrowser-title titlebar"><em class="titlebar-Text">M$EME V!RU$ #41</em><em onclick="closeMeme(this)" class="closeBtn">X</em></p>
+				<img id="virusPic" src="assets/memez/meme01.jpg" />
+			</div-->
+        </div>
+		
+		<div id="systemCrash">
+			<p class="systemCrashText"></p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="assets/scripts/scalePage.js"></script>
+	<script type="text/javascript" src="assets/scripts/playerNameGen.js"></script>
+	<script type="text/javascript" src="assets/socket.io.js"></script>
+	<script type="text/javascript" src="assets/scripts/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="assets/typed.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/client-countup.js"></script>
+	<!--script type="text/javascript" src="assets/scripts/translateWildcards.js"></script-->
+	<script type="text/javascript" src="assets/scripts/terminal-main.js"></script>
+	<script type="text/javascript" src="assets/scripts/connections/ConnectToGame.js"></script>
+    <script type="text/javascript" src="assets/scripts/nmap-output.js"></script>
+	<script type="text/javascript" src="assets/scripts/fileViewer.js"></script>
+	
+    <script>	
+		var CrackedWhitelists = [];
+		var HackedComps = [];
+		var CurrentWhitelist = null;
+		var ConnectedPorts = [];
+		var ElimCount = 0;
+		var CurrentComp = null;
+		
+		/*if (myUsername == null || myUsername == "") {
+			var myUsername = GenerateRandomName();
+		}*/
+		var pingCount = 0;
+		var SingleLoop;
+		function HideConnectedDialog() {
+			if (ConnectedDialog.style.animation.indexOf("fade-in") != -1) {
+				ConnectedDialog.style.animation = "fade-out 1s forwards";
+			}
+		}
+		
+		function RebootProcess() {
+			document.getElementById("systemCrash").style.display = "block";
+			var TextToType = "System Crash Occured! ---- \n\n    ---- CRASH REASON:  MEMORY CORRUP$ION  -----   \n\n   INITIATING FAILSALE PROTOCALS .....................  \n\n	 SYSTEM UI RESTARTING ...................";
+			new Typed('.systemCrashText', {
+				strings: [TextToType],
+				typeSpeed: 40,
+				backSpeed: 10,
+				loop: false
+			});
+			document.getElementById("nameReadout").innerHTML = myUsername;
+			document.getElementById("ipReadout").innerHTML = "localhost";
+			Disconnect();
+			CompleteAppends();
+			setTimeout(function() {
+				document.getElementById("systemCrash").style.display = "none";
+				document.getElementsByClassName("systemCrashText")[0].innerHTML = "";
+				setTimeout(function() {
+					UIRestart();
+				}, 250);
+			}, 12000);
+		}
+		
+		function ping(targetIP) {
+			HideConnectedDialog();
+			if (targetIP !== "127.0.0.1" && targetIP !== "localhost") {
+				socket.emit("gameReq", {type: "gamePing", TargetIP: targetIP, gameCode: currentGamecode});
+				console.log({type: "gamePing", TargetIP: targetIP, gameCode: currentGamecode});
+				AppendTerminal("Attempting to connect to: '" + targetIP + "' ");
+				pingCount = 0;
+				SingleLoop = setInterval(function() {
+					AppendTerminal(".");
+					pingCount++;
+					if (pingCount > 10) {
+						AppendTerminal("\nConnection Failed - No response from server.");
+						CompleteAppends();
+						clearInterval(SingleLoop);
+					}
+				}, 350);
+			} else {
+				AppendTerminal("Connection Failed - You are localhost!");
+				CompleteAppends();
+			}
+		}
+		var MyMemez;
+		var RandomIndex;
+		function MemesVirus() {
+			ShowIncommingWarning();
+			setTimeout(function() {
+				MyMemez = ["meme01.jpg", "meme02.jpg", "meme03.jpg", "meme04.jpg", "meme05.jpg", "meme06.jpg", "meme07.jpg", "meme08.jpg", "meme09.jpg"];
+				for (c = 0; c < (Math.floor(Math.random() * 12) + 4); c++) {
+					setTimeout(function() {
+						if (MyMemez.length <= 1) {
+							MyMemez = ["meme01.jpg", "meme02.jpg", "meme03.jpg", "meme04.jpg", "meme05.jpg", "meme06.jpg", "meme07.jpg", "meme08.jpg", "meme09.jpg"];
+						}
+						RandomIndex = Math.floor(Math.random() * MyMemez.length);
+						var newMeme = document.createElement("div");
+						newMeme.className = "memeWindow";
+						var titleBar = document.createElement("p");
+						titleBar.className = "filebrowser-title titlebar";
+						var titlebarText = document.createElement("em");
+						titlebarText.className = "titlebar-Text";
+						titlebarText.innerHTML = "M$EME V!RU$ " + (Math.floor(Math.random() * 300) + 100).toString() + '<em class="closeBtn" onclick="closeMeme(this)">X</em>';
+						titleBar.appendChild(titlebarText);
+						newMeme.appendChild(titleBar);
+						var memeActual = document.createElement("img");
+						memeActual.id = "virusPic";
+						memeActual.src = "assets/memez/" + MyMemez[RandomIndex];
+						MyMemez.splice(RandomIndex, 1);
+						newMeme.appendChild(memeActual);
+						newMeme.style.opacity = "0";
+						newMeme.style.position = "absolute";
+						newMeme.style.left = (Math.floor(Math.random() * 700) + 25).toString() + "px";
+						newMeme.style.top = (Math.floor(Math.random() * 360) + 10).toString() + "px";
+						newMeme.style.width = (Math.floor(Math.random() * 620) + 340).toString() + "px";
+						newMeme.style.height = (Math.floor(Math.random() * 540) + 320).toString() + "px";
+						newMeme.style.animation = "fade-in .75s forwards";
+						document.getElementById("ScaledContent").appendChild(newMeme);
+					}, 250 * c);
+				}
+			}, 750);
+		}
+			
+		function closeMeme(targetMeme) {
+			var memeText = targetMeme.parentNode;
+			var memeTitle = memeText.parentNode;
+			var actualMeme = memeTitle.parentNode;
+			actualMeme.style.animation = "fade-out 1s forwards";
+			setTimeout(function() {
+				actualMeme.style.display = "none";
+				actualMeme.parentNode.removeChild(actualMeme);
+			}, 1000);
+		}
+		
+		var tmpCurrentGenre = "chill";
+		
+		socket.on('gameRes', function(msg) {
+			console.log(msg);
+			if (msg.type === "pingRes" && msg.code === currentGamecode) {
+				clearInterval(SingleLoop);
+				if (msg.compinfo != null) {
+					console.log(msg.compinfo);
+					var CompInfo = msg.compinfo;
+					if (CompInfo.WhitelistSrv != null && CompInfo.WhitelistSrv != "none") {
+						if (CrackedWhitelists.indexOf(CompInfo.WhitelistSrv) != -1) {
+							AppendTerminal("\n ----- Connection Success ----- " + "\n" + 
+							"IP : " + CompInfo.ip + "\n" + 
+							" --- Computer Node --- " + "\n" +
+							"Name: " + CompInfo.hostname + "\n" +
+							"Owner: " + CompInfo.owner + "\n" + 
+							//"Security Level: " + CompInfo.SecLvl + "\n" + 
+							"-----------------------------------");
+							refreshFileBrowser(CompInfo.Data);
+							document.getElementById("ipReadout").innerHTML = CompInfo.ip;
+							UpdateCompInfo(CompInfo);
+							document.getElementById("currentUrl").value = CompInfo.ip + "/";
+							
+							if (CompInfo.owner != "NPC" && CompInfo.owner != "N/A") {
+								if (tmpCurrentGenre !== "dramatic") {
+									socket.emit("musicReq", {type: "changeTrack", gameCode: currentGamecode, genre: "dramatic"});
+								}
+								tmpCurrentGenre = "dramatic";
+							} else if (tmpCurrentGenre == "dramatic") {
+								socket.emit("musicReq", {type: "changeTrack", gameCode: currentGamecode, genre: "chill"});
+								tmpCurrentGenre = "chill";
+							}
+							
+							CurrentComp = CompInfo;
+							
+							/*if (CompInfo.Ports != null && CompInfo.length > 0) {
+								ConnectedPorts = LoadPorts(CompInfo.Ports);
+							}*/
+							
+							CompleteAppends();
+							CurrentWhitelist = null;
+						} else {
+							AppendTerminal("\n ----- Connection Failure ------ " + "\n" + 
+							"IP: " + CompInfo.ip + "\n" +
+							"ACCESS DENIED --- THERE IS A WHITELIST SERVER PROTECTING THIS NODE" + "\n" + 
+							"Whitelist Source : " + msg.WhitelistIP + "\n");
+							document.getElementById("currentUrl").value = "localhost";
+							document.getElementById("ipReadout").innerHTML = "localhost";
+							Disconnect();
+							CurrentWhitelist = null;
+							CompleteAppends();
+							/*refreshFileBrowser(CompInfo.Data);
+							document.getElementById("ipReadout").innerHTML = CompInfo.ip;
+							UpdateCompInfo(CompInfo);
+							document.getElementById("currentUrl").value = CompInfo.ip + "/";*/
+						}
+					} else if (CompInfo.Whitelist == true) {
+						AppendTerminal("\n ----- Connection Success ----- \n" + 
+						"IP : " + CompInfo.ip + "\n" +
+						" --- Whitelist Server --- " + "\n" + 
+						"Name: " + CompInfo.hostname + "\n" + 
+						"Security Level: " + CompInfo.SecLvl);
+						CompleteAppends();
+						refreshFileBrowser(CompInfo.Data);
+						UpdateCompInfo(CompInfo);
+						document.getElementById("currentUrl").value = CompInfo.ip + "/";
+						document.getElementById("ipReadout").innerHTML = CompInfo.ip;
+						CurrentWhitelist = CompInfo.hostname;
+					} else {
+						AppendTerminal("\n ----- Connection Success ----- " + "\n" + 
+						"IP : " + CompInfo.ip + "\n" + 
+						"Name: " + CompInfo.hostname + "\n" +
+						"Owner: " + CompInfo.owner + "\n" + 
+						//"Security Level: " + CompInfo.SecLvl + "\n" + 
+						"-----------------------------------");
+						refreshFileBrowser(CompInfo.Data);
+						document.getElementById("ipReadout").innerHTML = CompInfo.ip;
+						UpdateCompInfo(CompInfo);
+						document.getElementById("currentUrl").value = CompInfo.ip + "/";
+						
+						if (CompInfo.owner != "NPC" && CompInfo.owner != "N/A") {
+							socket.emit("musicReq", {type: "changeTrack", gameCode: currentGamecode, genre: "dramatic"});
+						} else if (Music1.src.indexOf("dramatic") != -1 || Music2.src.indexOf("dramatic") != -1) {
+							socket.emit("musicReq", {type: "changeTrack", gameCode: currentGamecode, genre: "chill"});
+						}
+						CompleteAppends();
+						
+						CurrentComp = CompInfo;
+						
+						CurrentWhitelist = null;
+					}
+					if (CompInfo.Ports != null && CompInfo.Ports != "undefined") {
+						//CurrentPorts = CompInfo.Ports;
+						//ConnectedPorts = LoadPorts(CompInfo.Ports);
+						ConnectedPorts = LoadPorts(CompInfo.Ports);
+					} else {
+						ConnectedPorts = GeneratePorts(parseInt(CompInfo.SecLvl));
+					}
+				} else {
+					AppendTerminal("\nConnection Failed - Could not resolve IP Address!");
+					refreshFileBrowser("blank");
+					CompleteAppends();
+				}
+			} else if (msg.type == "openFile" && msg.code === currentGamecode) {
+				if (msg.response == "Success") {
+					var FileName = msg.fileName.toString();
+					var FileContents = msg.fileData.toString();
+					DisplayFile(FileName, FileContents);
+					AppendTerminal("\nOpen Success!");
+					CompleteAppends();
+				} else {
+					AppendTerminal("Open File " + msg.response);
+					CompleteAppends();
+				}
+			} else if (msg.type === "fileCreation" && msg.code === currentGamecode) {
+				if (msg.response == "Success!") {
+					DisplayFile(msg.newFilename, "");
+					AppendTerminal("\nFile Created Successfully!");
+					addFileOrFolder(msg.newFilename, "file", "");
+					CompleteAppends();
+				}
+			} else if (msg.code === currentGamecode && msg.type === "fileUpdate") {
+				if (msg.response == "Update Success!") {
+					AppendTerminal("\nFile Saved Successfully!");
+					CloseContextMenu();
+					CompleteAppends();
+				} else {
+					AppendTerminal("File " + msg.response);
+					CloseContextMenu();
+					CompleteAppends();
+				}
+			} else if (msg.type == "dlRes" && msg.code == currentGamecode) {
+				if (msg.response == "Download Success!") {
+					AppendTerminal(" Success!");
+				} else {
+					AppendTerminal(" Failure!");
+				}
+				CompleteAppends();
+			} else if (msg.type == "imageRes") {
+				document.getElementById("playerIco").src = msg.ImageSource;
+				document.getElementById("nameReadout").innerHTML = msg.PlayerName;
+				document.title = "CydeaOS - " + msg.PlayerName;
+			} else if (msg.type == "timerStart") {
+				if (msg.code == currentGamecode) {
+					StartTimer();
+					socket.emit("musicReq", {type: "getTrack", gameCode: currentGamecode});
+				}
+			} else if (msg.type == "portCrack") {
+				console.log(msg.pType);
+				if (msg.response == "Success!") {
+					if (msg.pType == "ssh") {
+						LaunchPortCrack("22");
+						AppendTerminal("\nLaunched Cracker SSH-22");
+					} else if (msg.pType == "ftp") {
+						LaunchPortCrack("21");
+						AppendTerminal("\nLaunched Cracker FTP-21");
+					} else if (msg.pType == "sql") {
+						LaunchPortCrack("1433");
+						AppendTerminal("\nLaunched Cracker SQL-1433");
+					} else if (msg.pType == "pword") {
+						LaunchPortCrack("pword");
+						AppendTerminal("\nLaunched Dictionary Attack");
+					}
+					//AppendTerminal("Port Cracking - Success!");
+				} else {
+					AppendTerminal("Port Cracking - " + msg.response);
+				}
+				CompleteAppends();
+			} else if (msg.type == "forkBomb-launch" && msg.code == currentGamecode) {
+				console.log(msg);
+				AppendTerminal("\nForkBomb Launch - " + msg.response);
+				CompleteAppends();
+			} else if (msg.type === "elimination" && msg.code == currentGamecode) {
+				if (msg.message === "eliminated") {
+					UIShake(10);
+					setTimeout(function() {
+						Music1.pause();
+						Music2.pause();
+						KillUI();
+						setTimeout(function() {
+							ShowGameOver();
+						}, 1500);
+					}, 1000);
+				}
+			} else if (msg.type === "endGame" && msg.code === currentGamecode) {
+				if (msg.result === "Survived!") {
+					UIShake(10);
+					setTimeout(function() {
+						Music1.pause();
+						Music2.pause();
+						KillUI();
+						setTimeout(function() {
+							ShowWinner();
+						}, 1500);
+					}, 1000);
+					socket.emit("musicReq", {type: "changeTrack", gameCode: currentGamecode, genre: "upbeat"});
+				}
+			} else if (msg.type == "forceCrash" && msg.code == currentGamecode) {
+				KillUI();
+				setTimeout(function() {
+					UIRestart();
+				}, 4000);
+			} else if (msg.type == "launchVirus" && msg.code == currentGamecode) {
+				if (msg.virusType == "memez") {
+					ShowIncommingWarning();
+					setTimeout(function() {
+						MemesVirus();
+					}, 500);
+				}
+			} else if (msg.type == "virusLaunch" && msg.code == currentGamecode) {
+				if (msg.vType == "memez") {
+					if (msg.response == "Success!") {
+						AppendTerminal("MemesVirus - Launch Successful!");
+					} else {
+						AppendTerminal("MemesVirus - " + msg.response);
+					}
+					CompleteAppends();
+				}
+			} else if (msg.type == "renRes") {
+				if (msg.response == "Rename Failed!") {
+					AppendTerminal("\nRename Failed - Likely invalid filename.");
+				} else {
+					AppendTerminal("\nRename Succeeded!");
+					refreshFileBrowser(msg.CompInfo.Data);
+				}
+				CompleteAppends();
+			} else if (msg.type === "forkBomb" && msg.code == currentGamecode) {
+				UIShake(4);
+				setTimeout(function() {
+					ForkBomb();
+				}, 500);
+			} else if (msg.type == "delRes") {
+				clearInterval(SingleLoop);
+				if (msg.response == "Delete Failed!") {
+					AppendTerminal(" Failed! - Likely invalid filename.");
+				} else {
+					AppendTerminal("Success!");
+					if (msg.elim === true) {
+						ElimCount++;
+					}
+					refreshFileBrowser(msg.CompInfo.Data);
+				}
+				CompleteAppends();
+			} else if (msg.type == "incomingConn" && msg.code == currentGamecode) {
+				ShowIncommingWarning();
+			}
+			
+			if (msg.timeLeft != null && msg.timeLeft != "null" && msg.timeLeft != "undefined") {
+				console.log(msg.timeLeft);
+				SyncTimer(msg.timeLeft);
+			}
+			//console.log(msg);
+		});
+		
+		socket.on("loginRes", function(msg) {
+			if (msg.type == "imageRes") {
+				if (msg.username == myUsername) {
+					if (msg.response == "Success!") {
+						document.getElementById("playerIco").src = msg.imageSrc;
+						document.getElementById("nameReadout").innerHTML = msg.username;
+						document.title = "CydeaOS - " + msg.username;
+					} else {
+						console.log(msg);
+						setTimeout(function() {
+							//window.location.replace("index.html");
+						}, 2500);
+					}
+				}
+			}
+		});
+		var ConnectedDialog = document.getElementById("connectedDialog");
+		var ConnectedToOutput = document.getElementById("compInfo");
+		var CompIcon = document.getElementById("connectedIcon");
+		function UpdateCompInfo(CompInfo) {
+			//ConnectedToOutput.style.display = "block";
+			//ConnectedToOutput.style.animation = "notify-show 1s forwards";
+			
+			setTimeout(function() {
+				ConnectedDialog.style.display = "block";
+				ConnectedDialog.style.opacity = "0";
+				setTimeout(function() {
+					ConnectedToOutput.innerHTML = "Name: <b>" + CompInfo.hostname + "</b><br/>IP: <b>" + CompInfo.ip + "</b><br/>Owner: <b>" + CompInfo.owner + "</b></br>Security Level: <b>" + CompInfo.SecLvl + "</b>";
+					var CompType = Math.floor(Math.random() * 4) + 1;
+					if (CompInfo.compIco == null || CompInfo.compIco == "undefined") {
+						if (CompType == 1) {
+							CompIcon.src = "assets/CompIcons/Computer.png";
+						} else if (CompType == 2) {
+							CompIcon.src = "assets/CompIcons/Laptop.png";
+						} else if (CompType == 3) {
+							CompIcon.src = "assets/CompIcons/Sec0Computer.png";
+						} else if (CompType == 4) {
+							CompIcon.src = "assets/CompIcons/Sec1Computer.png";
+						} else {
+							CompIcon.src = "assets/CompIcons/Sec2Computer.png";
+						}
+					} else {
+						CompIcon.src = CompInfo.compIco;
+					}
+				
+					ConnectedDialog.style.animation = "fade-in 1s forwards";
+				}, 250);
+			}, 250);
+		}
+	</script>
+    
+	<script type="text/javascript">
+	var fileBrowser = document.getElementById("fileBrowser-container");
+		function toggleFileBrowser() {
+			if (fileBrowser.style.animation == "ui-open1 1s forwards") {
+				fileBrowser.style.animation = "hide-window 1s forwards";
+				setTimeout(function() {
+					fileBrowser.style.display = "none";
+				}, 800);
+			} else {
+				fileBrowser.style.display = "block";
+				fileBrowser.style.animation = "ui-open1 1s forwards";
+			}
+		}
+	
+	var filesContainer = document.getElementById("filesContainer");
+	function clearFileBrowser() {
+		var filesContainer = document.getElementById("filesContainer");
+		filesContainer.innerHTML = '';
+		loopCounter = 0;
+		document.getElementById("disconnectedText").style.display = "block";
+	}
+	
+	function refreshFileBrowser(fileArray) {
+		clearFileBrowser();
+		if (fileArray != "blank") {
+			document.getElementById("disconnectedText").style.display = "none";
+			for (var i in fileArray) {
+				if (fileArray[i].toString().indexOf("/") === 0) {
+					addFileOrFolder(fileArray[i][0].toString(), "folder", fileArray[i][1]);
+				} else {
+					addFileOrFolder(fileArray[i][0].toString(), "file", fileArray[i][1]);
+				}
+			}
+		}
+	}
+	var loopCount = 0;
+	function addFileOrFolder(fileName, type, filedata) {
+		var fileContainer = document.createElement("div");
+		fileContainer.className = "objectContainer";
+		var fileIcon = document.createElement("img");
+		fileIcon.className = "objectIcon";
+		var fileNameOut = document.createElement("em");
+		fileNameOut.className = "objectName";
+		fileNameOut.innerHTML = "- " + fileName.toString();
+		fileContainer.appendChild(fileIcon);
+		fileContainer.appendChild(fileNameOut);	
+		fileContainer.id = type.toString() + loopCount.toString();
+		if (type === "file" ) {
+			if (fileName.toString().indexOf(".exe") == -1) {
+				fileIcon.src = "assets/text-file-4-xxl.png";
+			} else {
+				fileIcon.src = "assets/exe-xxl.png";
+			}
+			/*fileNameOut.onclick = function() {
+				textEditorMain.style.display = "block";
+				textEditorMain.style.opacity = "0";
+				textEditorMain.style.animation = "show-textEdit 2s forwards";
+				document.getElementById("textEditor1").value = translateWildCards(filedata.toString());
+			}*/
+			fileNameOut.onclick = function() {
+				AppendTerminal("cat " + fileName.toString());
+				$("#terminalProcessor").submit();
+			}
+		} else {
+			fileIcon.src = "assets/dark-blue-folder.png";
+			fileNameOut.onclick = function() {
+				refreshFileBrowser(filedata);
+			};
+		}
+		filesContainer.appendChild(fileContainer);
+		loopCount++;
+	}
+
+	var connected = false;
+	if (connected != true) {
+		refreshFileBrowser("blank");
+	}
+	</script>
+	
+	<script type="text/javascript">
+		function RequestPlayerImage() {
+			//socket.emit("gameReq", {type: "imageReq", code: currentGamecode, PlayerID: currentPlayerID});
+			socket.emit("loginReq", {type: "getImage", username: myUsername});
+			console.log("Requesting Update for Player Icon");
+		}
+		RequestPlayerImage();
+		
+		function LoadGameData() {
+			socket.emit("gameReq", {type: "GameDataReq", code: currentGamecode, PlayerID: currentPlayerID});
+			console.log("Requesting Update for Player Icon");
+		}
+	</script>
+    
+    <script type="text/javascript" src="assets/scripts/audio mixer/Audio Mixer - Final.js"></script>
+	<script type="text/javascript">
+	
+	function generateBinary(digitNumber) {
+		var binaryData = "";
+		for (i = 0; i < digitNumber; i++) { 
+			binaryData += Math.floor(Math.random() * 2).toString();
+		}
+		return binaryData;
+	}
+	
+	function ForkBomb() {
+		for (i=0; i < 12; i++) {
+			setTimeout(function() {
+				addFileOrFolder(generateBinary(45), "file", "BLANK"); 
+			}, 100 * i);
+		}
+		for (j=0; j < 59; j++) {
+			setTimeout(function() {
+				AppendTerminal(generateBinary(30));	
+			}, 30 * j);
+		}
+		setTimeout(function() {
+			document.getElementById("ipReadout").innerHTML = generateBinary(5);
+			setTimeout(function() {
+				document.getElementById("nameReadout").innerHTML = generateBinary(12);
+			}, 250);
+			KillUI();
+			setTimeout(function() {
+				RebootProcess();
+				document.getElementById("terminal1").value = "\nTerminal>";
+			}, 3500);
+		}, 800);
+	}
+	function KillUI() {
+		setTimeout(function() {
+			document.getElementsByClassName("backgroundImage")[0].style.display = "none";
+			setTimeout(function() {
+				Terminal.style.animation = "fade-out 1s forwards";
+			}, 300);
+			setTimeout(function() {
+				fileBrowser.style.animation = "fade-out 1s forwards";
+			}, 650);
+			setTimeout(function() {
+				ForceHideFileViewer();
+			}, 780);
+			setTimeout(function() {
+				document.getElementsByClassName("timeStat")[0].style.animation = "fade-out 1s forwards";
+			}, 945);
+			setTimeout(function() {
+				ConnectedDialog.style.animation = "fade-out 1s forwards";
+			}, 1045);
+			setTimeout(function() {
+				document.getElementsByClassName("playerStat")[0].style.animation = "fade-out 1s forwards";
+			}, 1200);
+			setTimeout(function() {
+				ForceHideFileViewer();
+			}, 1350);
+		}, 800);
+	}
+	
+	function UIRestart() {
+		/*for (i=0; i < 12; i++) {
+			setTimeout(function() {
+				addFileOrFolder(generateBinary(45), "file", "BLANK"); 
+			}, 100 * i);
+		}
+		for (j=0; j < 59; j++) {
+			setTimeout(function() {
+				AppendTerminal(generateBinary(30));	
+			}, 30 * j);
+		}*/
+		refreshFileBrowser("blank");
+		/*setTimeout(function() {
+			document.getElementById("ipReadout").innerHTML = generateBinary(5);
+			setTimeout(function() {
+				document.getElementById("nameReadout").innerHTML = generateBinary(12);
+			}, 250);
+		}, 800); */
+		setTimeout(function() {
+			setTimeout(function() {
+				document.getElementsByClassName("backgroundImage")[0].style.display = "block";
+				setTimeout(function() {
+					document.getElementsByClassName("backgroundImage")[0].style.display = "none";
+					setTimeout(function() {
+						document.getElementsByClassName("backgroundImage")[0].style.display = "block";
+						setTimeout(function() {
+							document.getElementsByClassName("backgroundImage")[0].style.display = "none";
+							setTimeout(function() {
+								document.getElementsByClassName("backgroundImage")[0].style.display = "block";
+							}, 125);
+						}, 125);
+					}, 125);
+				}, 125);
+			}, 125);
+			setTimeout(function() {
+				Terminal.style.animation = "ui-open 1s forwards";
+			}, 1200);
+			setTimeout(function() {
+				fileBrowser.style.animation = "fade-in 1s forwards";
+			}, 945);
+			setTimeout(function() {
+				document.getElementsByClassName("timeStat")[0].style.animation = "fade-in 1s forwards";
+			}, 300);
+			setTimeout(function() {
+				document.getElementsByClassName("playerStat")[0].style.animation = "fade-in 1s forwards";
+			}, 650);
+		}, 1350);
+	}
+	
+	function ShowGameOver() {
+		var GameOverScreen = document.getElementById("gameOver");
+		document.getElementById("playersElim").innerHTML = 0;
+		document.getElementById("compsHacked").innerHTML = HackedComps.length.toString();
+		document.getElementById("whitelistHacked").innerHTML = CrackedWhitelists.length.toString();
+		GameOverScreen.style.animation = "notify-open 2s forwards";
+		GameOverScreen.style.display = "block";
+	}
+	
+	function ShowWinner() {
+		var GameOverScreen = document.getElementById("gameWin");
+		document.getElementById("playersElim2").innerHTML = 0;
+		document.getElementById("compsHacked2").innerHTML = HackedComps.length.toString();
+		document.getElementById("whitelistHacked2").innerHTML = CrackedWhitelists.length.toString();
+		GameOverScreen.style.animation = "notify-open 2s forwards";
+		GameOverScreen.style.display = "block";
+	}
+	
+	function ShowIncommingWarning() {
+		var incomingDialog = document.getElementById("incomingConn");
+		if (incomingDialog.style.animation.toString().indexOf("incomingFlash2") == -1) {
+			incomingDialog.style.animation = "incomingFlash2 2s forwards, incomingExit 2s 3s forwards";
+		} else {
+			incomingDialog.style.animation = "incomingFlash 2s forwards, incomingExit2 2s 3s forwards";
+		}
+		incomingDialog.style.display = "block";
+		UIShake(3);
+		setTimeout(function() {
+			incomingDialog.style.display = "none";
+		}, 5000);
+		PlaySFX("resources/audio/IncomingConn.wav");
+	}
+	
+	function UIShake(LoopCount) {
+		document.getElementById("ScaledContent").style.animation = "shake-animation .2s .4s " + LoopCount.toString();	
+		setTimeout(function() {
+			document.getElementById("ScaledContent").style.animation = "none";
+		}, (200 * parseInt(LoopCount)) + 400);
+	}
+	
+	LoadTime();
+	setTimeout(function() {
+		socket.emit('clientReq', {type: "playerLoaded", code: currentGamecode, username: myUsername}); //UserID: currentPlayerID
+	}, 500);
+	
+	
+	setTimeout(function() {
+		toggleTerminal();
+		toggleFileBrowser();
+	}, 500);
+	
+	</script>
+</body>
+
+</html>

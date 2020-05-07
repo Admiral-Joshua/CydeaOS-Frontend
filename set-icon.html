@@ -1,0 +1,350 @@
+<html>
+
+<head>
+	<title>CydeaOS - Choose Icon</title>
+	<link href="assets/styles/general.css" rel="stylesheet" />
+	<link href="assets/animations/modules-01.css" rel="stylesheet" />
+	<link href="assets/animations/modules-01.css" rel="stylesheet" />
+	<link href="assets/animations/flashes-01.css" rel="stylesheet" />
+	<style>
+		img.backgroundImg {
+			object-fit: fill;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			animation: pulse 4s infinite;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: -1;
+		}
+		.bgImage {
+			animation: background-in 1.5s forwards;
+		}
+		@keyframes background-in {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 0.1;
+			}
+		}
+		div.TypeMenu {
+			width: 30%;
+			height: 40%;
+			position: absolute;
+			left: 35%;
+			top: 30%;
+			border-radius: 10px;
+			border-top-right-radius: 40px;
+			border-bottom-left-radius: 30px;
+			border: 1px solid rgb(0, 120, 240);
+			background-color: rgba(0, 60, 120, 0.6);
+			animation: notify-open 1s forwards;
+		}
+		p {
+			margin: 10px;
+		}
+		p.typeMenuTxt {
+			color: rgb(0, 120, 255);
+		}
+		p.typeMenuTxtSmall {
+			font-size: 12pt;
+			color: rgb(0, 80, 255);
+		}
+		img.catIcon {
+			width: 70px;
+			height: 70px;
+			position: relative;
+			top: 5px;
+			left: 48px;
+			border-radius: 60px;
+			border: 0.5px solid rgb(0, 60, 120);
+		}
+		p.catText {
+			font-size: 14pt;
+			text-align: center;
+			color: rgb(0, 160, 255);
+		}
+		div.catDiv {
+			width: 28%;
+			height: auto;
+			position: absolute;
+			top: 48%;
+			border: .5px solid rgb(0, 120, 240);
+			border-radius: 20px;
+			border-top-right-radius: 40px;
+			border-bottom-left-radius: 30px;
+			padding: -20px;
+			cursor: pointer;
+		}
+		div.Hacker-Category {
+			left: 2%;
+		}
+		div.Anime-Category {
+			left: 35%;
+		}
+		div.Other-Category {
+			left: 68%;
+		}
+		
+		div.hackerIcons {
+			width: 30%;
+			height: 40%;
+			position: absolute;
+			left: 35%;
+			top: 30%;
+			border-radius: 10px;
+			border-top-right-radius: 40px;
+			border-bottom-left-radius: 30px;
+			border: 1px solid rgb(0, 120, 240);
+			background-color: rgba(0, 60, 120, 0.6);
+			display: none;
+		}
+		div.iconsContainer {
+			width: 95%;
+			height: auto;
+			position: absolute;
+			left: 2.5%;
+			top: 10%;
+			text-align: center;
+			font-size: 22pt;
+		}
+		img.icon {
+			width: 85px;
+			height: 85px;
+			margin: 20px;
+			border-radius: 10px;
+		}
+		button.goBack {
+			background-color: transparent;
+			border: 1px solid rgba(0, 120, 240, 0.8);
+			font-size: 12pt;
+			color: rgb(0, 120, 240);
+			padding: 5px 10px;
+			font-family: NovaSquare;
+			position: absolute;
+			left: 77%;
+			top: 88%;
+		}
+		div.confirmationDialog {
+			width: 25%;
+			height: 20%;
+			background-color: rgb(0, 55, 95);
+			position: absolute;
+			left: 37%;
+			top: 45%;
+			border-radius: 10px;
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 40px;
+			border: 1px solid rgb(0, 120, 240);
+			display: none;
+		}
+		p.ConfirmTxt {
+			font-size: 22pt;
+			color: rgb(0, 120, 240);
+			
+		}
+		p.ConfirmTxtSmall {
+			font-size: 13pt;
+			margin: 15px;
+		}
+		button.ConfirmBtn {
+			width: 120px;
+			height: 40px;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 40px;
+			border: 1px solid rgb(0, 120, 240);
+			font-size: 14pt;
+			background-color: rgba(0, 120, 240, 0.4);
+			color: rgb(0, 160, 255);
+			margin: 10px;
+			padding: 5px;
+			font-family: NovaSquare;
+			position: relative;
+			left: 20%;
+		}
+	</style>
+</head>
+
+<body>
+	<img class="backgroundImg bgImage" src="assets/binary-8.jpg"/>
+
+	<div id="ScaledContent">
+		<div id="catMenu" class="TypeMenu">
+			<p class="typeMenuTxt">Choose your Player Icon</p>
+			<p class="typeMenuTxtSmall">This is the icon that other players will see in the game, don't worry, any choice you make isn't permanent, and can be changed from the account settings page between games!</p>
+			<div onClick="seeHackers()" class="catDiv Hacker-Category">
+				<img class="catIcon hacker-icon" src="assets/PlayerIcons/Hacker04.png"/>
+				<p class="catText cat01">Hackers<br/>Category</p>
+			</div>
+			<div class="catDiv Anime-Category" onClick="seeAnime()">
+				<img class="catIcon anime-icon" src="assets/PlayerIcons/Anime02.png"/>
+				<p class="catText cat02">Anime<br/>Category</p>
+			</div>
+			<div class="catDiv Other-Category" onClick="seeOther()">
+				<img class="catIcon other-icon" src="assets/PlayerIcons/Other05.png"/>
+				<p class="catText cat03">Other<br/>Category</p>
+			</div>
+		</div>
+		<div id="hackMenu" class="hackerIcons">
+			<p class="typeMenuTxt">Choose your Player Icon</p>
+			<div class="iconsContainer">
+				1<img class="icon ico1" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Hacker01.png"/>
+				2<img class="icon ico2" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Hacker02.png"/>
+				3<img class="icon ico3" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Hacker03.png"/><br/>
+				4<img class="icon ico4" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Hacker04.png"/>
+				5<img class="icon ico5" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Hacker05.png"/>
+			</div>
+			<button class="goBack" onClick="seeCats()">Go Back</button>
+		</div>
+		<div id="animeMenu" class="hackerIcons">
+			<p class="typeMenuTxt">Choose your Player Icon</p>
+			<div class="iconsContainer">
+				1<img class="icon ico1" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime01.png"/>
+				2<img class="icon ico2" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime02.png"/>
+				3<img class="icon ico3" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime03.png"/><br/>
+				4<img class="icon ico4" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime04.png"/>
+				5<img class="icon ico5" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime05.png"/>
+				6<img class="icon ico6" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Anime06.png"/>
+			</div>
+			<button class="goBack" onClick="seeCats()">Go Back</button>
+		</div>
+		<div id="otherMenu" class="hackerIcons">
+			<p class="typeMenuTxt">Choose your Player Icon</p>
+			<div class="iconsContainer">
+				1<img class="icon ico1" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other01.png"/>
+				2<img class="icon ico2" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other02.png"/>
+				3<img class="icon ico3" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other03.png"/><br/>
+				4<img class="icon ico4" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other04.png"/>
+				5<img class="icon ico5" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other05.png"/>
+				6<img class="icon ico6" onClick="ShowConfirmation(this)" src="assets/PlayerIcons/Other06.png"/>
+			</div>
+			<button class="goBack" onClick="seeCats()"><-Go Back</button>
+		</div>
+	</div>	
+	
+	<div id="confirmDialog" class="confirmationDialog">
+		<p class="ConfirmTxt">Confirm Selection?</p>
+		<p class="ConfirmTxtSmall">Are you sure you want to select this image? Once selected it cannot be changed until your next game.</p>
+		<button class="ConfirmBtn YesBtn" onClick="ConfirmIcon()">Confirm</button><button class="ConfirmBtn NoBtn" onClick="HideConfirmation()">Cancel</button>
+	</div>
+	
+	<script type="text/javascript" src="assets/scripts/playerNameGen.js"></script>
+	<script type="text/javascript" src="assets/socket.io.js"></script>
+	<script type="text/javascript" src="assets/scripts/scalePage.js"></script>
+	<!--script type="text/javascript" src="assets/scripts/connections/ConnectToGame.js"></script-->
+	
+	<script type="text/javascript">
+		//var socket = io.connect("http://127.0.0.1:4003");
+		var socket = io.connect("https://cydeaos.lunasphere.co.uk:4003", {secure: true, reconnect: false, rejectUnauthorized: false}); 		// FOR WHEN ONLINE
+	
+		var CurrentUser;
+		function CheckUser() {
+			CurrentUser = sessionStorage.getItem("activeUser");
+			if (CurrentUser === null || CurrentUser === "") {
+				window.location.replace("index.html");
+			}
+		}
+	
+		var Confirmed = false;
+		var ConfirmationDialog = document.getElementById("confirmDialog");
+		var SelectedIcon = null;
+		function ShowConfirmation(clickedIcon) {
+			ConfirmationDialog.style.display = "block";
+			ConfirmationDialog.style.animation = "fade-in 1s forwards";
+			console.log(clickedIcon.src);
+			SelectedIcon = clickedIcon.src.toString();
+		}
+		
+		function HideConfirmation() {
+			ConfirmationDialog.style.animation = "fade-out 1s forwards";
+			ConfirmationDialog.style.display = "none";
+		}
+		
+		function ConfirmIcon() {
+			HideConfirmation();
+			if (SelectedIcon != null) {
+				SubmitPlayerIcon(SelectedIcon);
+			}
+		}
+		
+		function SubmitPlayerIcon(ImageSource) {
+			socket.emit("loginReq", {type: "setImage", username: CurrentUser, targetImg: ImageSource.toString()});
+			socket.on("loginRes", function (msg) {
+				if (msg.type == "imageUpdate") {
+					if (msg.response.indexOf("Failure!") !== -1) {
+						sessionStorage.setItem("activeUser", null);
+					} else {
+						localStorage.setItem("imgOverride-".concat(CurrentUser), ImageSource.toString());
+						//alert("Account Icon Updated Successfully!");
+						window.location.replace("index.html");
+					}
+					
+				}
+			});
+		}
+		
+		CheckUser();
+	</script>
+</body>
+
+
+<script type="text/javascript">
+	function seeOther() {
+		Audio.src = "audio/Selection/otherSelect.mp3";
+		Audio.play();
+		var categoryMenu = document.getElementById("catMenu");
+		var otherMenu = document.getElementById("otherMenu");
+		categoryMenu.style.animation = "notify-close 1.5s forwards";
+		setTimeout(function() {
+			categoryMenu.style.display = "none";
+			otherMenu.style.display = "block";
+			otherMenu.style.animation = "notify-open 1.5s forwards";
+		}, 900);
+	}
+	function seeAnime() {
+		Audio.src = "audio/Selection/animeSelect.mp3";
+		Audio.play();
+		var categoryMenu = document.getElementById("catMenu");
+		var animeMenu = document.getElementById("animeMenu");
+		categoryMenu.style.animation = "notify-close 1.5s forwards";
+		setTimeout(function() {
+			categoryMenu.style.display = "none";
+			animeMenu.style.display = "block";
+			animeMenu.style.animation = "notify-open 1.5s forwards";
+		}, 900);
+	}
+	function seeCats() {
+		var categoryMenu = document.getElementById("catMenu");
+		var hackerMenu = document.getElementById("hackMenu");
+		var animeMenu = document.getElementById("animeMenu");
+		var otherMenu = document.getElementById("otherMenu");
+		hackerMenu.style.animation = "notify-close 1.5s forwards";
+		animeMenu.style.animation = "notify-close 1.5s forwards";
+		otherMenu.style.animation = "notify-close 1.5s forwards";
+		setTimeout(function() {
+			hackerMenu.style.display = "none";
+			categoryMenu.style.display = "block";
+			categoryMenu.style.animation = "notify-open 1.5s forwards";
+		}, 900);
+	}
+	function seeHackers() {
+		Audio.src = "audio/Selection/hackerSelect.mp3";
+		Audio.play();
+		var categoryMenu = document.getElementById("catMenu");
+		var hackerMenu = document.getElementById("hackMenu");
+		categoryMenu.style.animation = "notify-close 1.5s forwards";
+		setTimeout(function() {
+			categoryMenu.style.display = "none";
+			hackerMenu.style.display = "block";
+			hackerMenu.style.animation = "notify-open 1.5s forwards";
+		}, 900);
+	}
+	
+	var Audio = new Audio();
+	
+</script>
+
+</html>

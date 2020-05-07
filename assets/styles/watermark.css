@@ -1,0 +1,67 @@
+div.cornerText {
+	width: auto;
+	height: 40px;
+	position: absolute;
+	text-align: center;
+	width: 15%;
+	height: 8%;
+	left: 84%;
+	top: 92%;
+}
+p.postText {
+	font-size: 14pt;
+	font-family: NovaSquare;
+	font-weight: bold;
+	position: relative;
+	left: 5px;
+	margin: 0px;
+}
+em.blue {
+	font-size: 18pt;
+	font-weight: bold;
+	font-style: normal;
+	color: rgb(0, 120, 240);	
+}
+em.red {
+	font-size: 22pt;
+	font-weight: bold;
+	font-style: normal;
+	color: rgb(160, 20, 100	);
+}
+p.versionText {
+	font-size: 10pt;
+	margin: 0px;
+	font-weight: normal;
+	color: rgb(0, 90, 180);	
+	font-style: italic;
+	text-align: center;
+	position: relative;
+	left: 10px;
+}
+a#versionOut {
+	font-size: 10pt;
+	margin: 0px;
+	font-weight: normal;
+	color: rgb(0, 90, 180);	
+	font-style: italic;
+	text-align: center;
+	position: relative;
+	left: 10px;
+	text-decoration: none;
+}
+
+div.cornerText2 {
+	width: auto;
+	height: 40px;
+	position: absolute;
+	text-align: left;
+	width: 20%;
+	height: 8%;
+	left: 2%;
+	top: 94%;
+	font-size: 16pt;
+}
+em#serverStatusOutput {
+	font-style: normal;
+	font-weight: bold;
+}

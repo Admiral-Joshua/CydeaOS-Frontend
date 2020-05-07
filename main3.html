@@ -1,0 +1,259 @@
+<html>
+
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>CydeaOS - TeamDM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+        <link href="assets/styles/general.css" rel="stylesheet">
+		<link href="assets/animations/flashes-01.css" rel="stylesheet" />
+		
+		<style>
+			img.backgroundImg {
+				opacity: 0.15;
+				animation: none;
+			}
+			
+			p.scoreOutput {
+				font-size: 84pt;
+				margin: 0px;
+				//font-weight: bold;
+				text-align: center;
+				font-family: KremlinRegular;
+				position: relative;
+			}
+			p.blueOutput {
+				color: rgb(68, 114, 196);
+				position: relative;
+				top: -45px;
+			}
+			p.redOutput {
+				color: rgb(255, 0, 0);
+			}
+			div.teamBlue {
+				width: 40%;
+				height: 20%;
+				position: absolute;
+				left: 1%;
+				top: 40%;
+			}
+			div.teamRed {
+				width: 40%;
+				height: 20%;
+				position: absolute;
+				left: 59%;
+				top: 40%;
+			}
+			div.blueScoreReadout {
+				width: 100%;
+				height: 55%;
+				margin: 0px;
+			}
+			img.teamBorder {
+				width: 100%;
+				height: 100%;
+				object-fit: fill;
+			}
+			div.blueteamName {
+				height: 45%;
+				width: 100%;
+				position: absolute;
+				left: 0%;
+				top: 65%;
+			}
+			p.teamNameActual {
+				font-size: 42pt;
+				margin: 0px;
+				position: absolute;
+				left: 0%;
+				top: 10%;
+				width: 100%;
+				height: 70%;
+				text-align: center;
+			}
+			
+			div.redteamName {
+				height: 45%;
+				width: 100%;
+				position: absolute;
+				left: 0%;
+				top: 0%;
+			}
+			div.redScoreReadout {
+				width: 100%;
+				height: 55%;
+				margin: 0px;
+				position: absolute;
+				top: 45%;
+				left: 0%;
+			}
+			
+			p.threatsLabel {
+				color: white;
+				font-size: 14pt;
+				margin: 10px 12px;
+			}
+			p.blueThreatsLabel {
+				text-align: left;
+			}
+			p.redThreatsLabel {
+				text-align: right;
+				
+			}
+			
+			div.timeReadout {
+				width: 22%;
+				height: 28%;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+			img.timeOutline {
+				width: 100%;
+				height: 100%;
+				object-fit: fill;
+				opacity: 0.5;
+			}
+			p.timeReadoutActual {
+				width: 100%;
+				height: 80%;
+				color: gold;
+				font-size: 84pt;
+				font-family: KremlinRegular;
+				position: absolute;
+				left: 0%;
+				top: -15%;
+				text-align: center;
+			}
+			p.timeLeftLabel {
+				color: white;
+				text-align: center;
+				font-size: 14pt;
+				position: absolute;
+				left: 0%;
+				width: 100%;
+				height: 10%;
+				top: 12%;
+			}
+			div.playersLists {
+				width: 90%;
+				height: 90%;
+				position: absolute;
+				left: 5%;
+				top: 5%;
+				//border: 1px solid cyan;
+				
+			}
+			div.teamMembersReadout {
+				width: 40%;
+				height: 30%;
+				//border: 1px solid cyan;
+				color: white;
+				transform: translate(-50%, -50%);
+				position: absolute;
+				font-size: 15pt;
+			}
+			div.blueMembers {
+				top: 82%;
+				left: 16%;
+			}
+			div.redMembers {
+				left: 82%;
+				top: 20%;
+			}
+			p.membersList {
+				font-style: italic;
+				font-size: 15pt;
+				
+			}
+			ul.membersLs {
+				width: 35%;
+				margin: 0px 10px;
+				position: absolute;
+			}
+			ul.LS_01 {
+				left: 0%;
+			}
+			ul.LS_02 {
+				left: 35%;
+			}
+			ul.LS_03 {
+				left: 70%;
+			}
+			li {
+				margin: 8px 2px;
+			}
+		</style>
+    <body>
+	
+        <img class="backgroundImg bgImage" src="assets/binary-8.jpg" />
+        
+		<div id="ScaledContent">
+			<div class="teamBlue">
+				<div class="blueScoreReadout">
+					<p class="threatsLabel blueThreatsLabel">Threats Resolved...</p>
+					<p class="scoreOutput blueOutput">0</p>
+				</div>
+				<div class="blueteamName">
+					<img class="teamBorder" src="assets/BlueTeamName.png" />
+					<p class="teamNameActual blueOutput">Team1Name</p>
+				</div>
+			</div>
+			<div class="playersLists">
+				<div class="teamMembersReadout blueMembers">
+					<p class="membersList">Blue Team Members:</p>
+					<ul class="membersLs LS_01">
+						<li>Admiral Joshua</li>
+						<li>The Judge</li>
+					</ul>
+					<ul class="membersLs LS_02">
+						<li>Admiral Joshua</li>
+						<li>The Judge</li>
+					</ul>
+					<ul class="membersLs LS_03">
+						<li>Admiral Joshua</li>
+						<li>The Judge</li>
+					</ul>
+				</div>
+				<div class="teamMembersReadout redMembers">
+					<p class="membersList">Red Team Members:</p>
+					<ul class="membersLs LS_01">
+						<li>JacobTCG</li>
+						<li>LordBofS</li>
+					</ul>
+					<ul class="membersLs LS_02">
+						<li>JacobTCG</li>
+						<li>LordBofS</li>
+					</ul>
+					<ul class="membersLs LS_03">
+						<li>JacobTCG</li>
+						<li>LordBofS</li>
+					</ul>
+				</div>
+			</div>
+			<div class="teamRed">
+				
+				<div class="redteamName">
+					<img class="teamBorder" src="assets/RedTeamName.png" />
+					<p class="teamNameActual redOutput">Team2Name</p>
+				</div>
+				<div class="redScoreReadout">
+					
+					<p class="scoreOutput redOutput">0</p>
+					<p class="threatsLabel redThreatsLabel">...Threats Created</p>
+				</div>
+			</div>
+		
+		
+			<div class="timeReadout">
+				<img class="timeOutline" src="assets/TDM_TimerOutline.png" />
+				<p class="timeLeftLabel">Time Left</p>
+				<p class="timeReadoutActual">09:54</p>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="assets/scripts/scalePage.js"></script>
+    </body>
+</html>

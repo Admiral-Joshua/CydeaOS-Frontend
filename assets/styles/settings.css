@@ -1,0 +1,331 @@
+/* LEVEL ONE  -----  Sound Settings   -   This CSS controls our Music / Sound Effects sliders     */
+input.settingsSlider1:thumb {
+	-webkit-appearance: none;
+	border: 1px solid rgb(0, 180, 240);
+	height: 36px;
+	width: 16px;
+	border-radius: 3px;
+	background: rgb(0, 180, 240);
+	cursor: pointer;
+	margin-top: 2px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0000dd; /* Add cool effects to your sliders! */
+}
+p.inputLbl {
+	color: rgb(0, 160, 255);
+	font-size: 12pt;
+	margin: 0px 5px 0px 10px;
+}
+em.sliderOutput {
+	font-style: normal;
+	font-size: 11pt;
+	margin: 0px 10px 0px 10px;
+	position: relative;
+	top: -5px;
+}
+input[type=range].settingsSlider1 {
+	-webkit-appearance: none;
+	width: 95%;
+	height: 20px;
+	background: transparent;
+}
+input[type=range].settingsSlider1:focus {
+  outline: none;
+}
+input[type=range].settingsSlider1::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  box-shadow: 1.2px 1.2px 1.6px #000000, 0px 0px 1.2px #0d0d0d;
+  background: #006478;
+  border-radius: 2px;
+  border: 0.5px solid #006478;
+}
+input[type=range].settingsSlider1::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 160, 240, 0.8);
+  height: 28px;
+  width: 16px;
+  border-radius: 10px;
+  background: #0078f0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.5px;
+}
+input[type=range].settingsSlider1:focus::-webkit-slider-runnable-track {
+  background: #00b9de;
+}
+input[type=range].settingsSlider1::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  box-shadow: 1.2px 1.2px 1.6px #000000, 0px 0px 1.2px #0d0d0d;
+  background: #006478;
+  border-radius: 2px;
+  border: 0.5px solid #006478;
+}
+input[type=range].settingsSlider1::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 160, 240, 0.8);
+  height: 28px;
+  width: 16px;
+  border-radius: 10px;
+  background: #0078f0;
+  cursor: pointer;
+}
+input[type=range].settingsSlider1::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].settingsSlider1::-ms-fill-lower {
+  background: #000f12;
+  border: 0.5px solid #006478;
+  border-radius: 4px;
+  box-shadow: 1.2px 1.2px 1.6px #000000, 0px 0px 1.2px #0d0d0d;
+}
+input[type=range].settingsSlider1::-ms-fill-upper {
+  background: #006478;
+  border: 0.5px solid #006478;
+  border-radius: 4px;
+  box-shadow: 1.2px 1.2px 1.6px #000000, 0px 0px 1.2px #0d0d0d;
+}
+input[type=range].settingsSlider1::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 160, 240, 0.8);
+  height: 28px;
+  width: 16px;
+  border-radius: 10px;
+  background: #0078f0;
+  cursor: pointer;
+  height: 8px;
+}
+input[type=range].settingsSlider1:focus::-ms-fill-lower {
+  background: #006478;
+}
+input[type=range].settingsSlider1:focus::-ms-fill-upper {
+  background: #00b9de;
+}
+div.soundSettings {
+	width: 49%;
+	height: 59%;
+	border: 1px solid rgb(0, 60, 120);
+	position: absolute;
+	left: 50%;
+	top: 125px;
+	border-radius: 15px;
+}
+
+
+/* LEVEL TWO   -----    Main Settings Panel  ---  Where our other two settings panels are stored */
+div.accSettings {
+	width: 100%;
+	height: 90%;
+	position: absolute;
+	left: 0px;
+	top: 20%;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+div#settingsMenu {
+	width: 45%;
+	height: 40%;
+	z-index: 3;
+	background-color: rgba(0, 40, 80, 0.8);
+	color: rgb(0, 120, 240);
+	position: absolute;
+	left: 27.5%;
+	top: 25%;
+	margin: 0;
+	padding: 12px;
+	border-radius: 30px;
+	border-top-right-radius: 80px;
+	border-bottom-left-radius: 60px;
+	border: 1px solid rgb(0, 120, 240);
+	animation: notify-open 1s forwards;
+	display: none;
+}
+
+p.settingHeader {
+	font-size: 10pt;
+	color: rgb(100, 100, 120);
+	height: 10%;
+}
+
+/* LEVEL THREE  -----  ACCOUNT SETTINGS PANEL  --  This CSS Controls the Account Settings section.  */
+
+div.accountSettings {
+	width: 49%;
+	height: 59%;
+	border: 1px solid rgb(0, 60, 120);
+	position: absolute;
+	left: 5px;
+	top: 125px;
+	border-radius: 15px;	
+}
+
+div.accOverview {
+	width: 25%;
+	height: 90%;
+	position: absolute;
+	left: 0px;
+	top: 10%;
+	margin: 0;
+}
+
+img#settingsIcon {
+	width: 80%;
+	height: 40%;
+	position: absolute;
+	top: 10px;
+	left: 10%;
+	margin: 0;
+}
+
+h2#accNameSetHeader {
+	font-size: 14pt;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 48%;
+	left: 0px;
+	height: 12%;
+	margin: 0px;
+	color: rgb(0, 100, 200);
+}
+
+p.accIconTxt {
+	font-size: 8pt;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 72%;
+	left: 0px;
+	height: 12%;
+	margin: 0px;
+	color: rgb(100, 100, 100);
+}
+
+ul.navigation {
+	width: 75%;
+	height: 10%;
+	position: absolute;
+	left: 25%;
+	top: 10%;
+	margin: 0px;
+}
+li.navLink {
+	display: inline;
+	text-align: center;
+	font-size: 11pt;
+	color: rgb(0, 100, 200);
+	margin: 0px 10px;
+}
+li.navLink-selected {
+	display: inline;
+	text-align: center;
+	font-size: 11pt;
+	color: rgb(40, 180, 160);
+	font-weight: bold;
+	margin: 0px 10px;
+}
+li.navLink:hover {
+	color: rgb(0, 140, 240);
+	margin: 0px 10px;
+}
+
+div.changeForm {
+	width: 75%;
+	margin: 0px;
+	height: 75%;
+	position: absolute;
+	left: 25%;
+	top: 25%;
+	background-color: rgba(0, 20, 40, 0.1);
+	border-bottom-right-radius: 20px;
+	display: none;
+}
+
+.changeInput { 
+	font-size: 12pt;
+	padding: 2px 4px;
+	width: 90%;
+	position: absolute;
+	left: 5%;
+	top: 10%;
+	border-radius: 10px;
+	background: transparent;
+	border: 1px solid rgb(0, 140, 240);
+	text-align: center;
+	font-family: OCRAEXT;
+	color: rgb(0, 120, 255);
+}
+.pChange2 {
+	position: absolute;
+	top: 40%;
+}
+.pChange3 {
+	position: absolute;
+	top: 60%;
+}
+
+div.notLoggedInPrompt {
+	background-color: rgba(0, 40, 80, 0.6);
+	color: white;
+	font-family: NovaSquare;
+	font-size: 10pt;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	z-index: 1;
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 15px;
+}
+
+/*
+  The Change Icon shortcut
+div.accIconChanger {
+	text-align: center;
+	width: 25%;
+	height: 100%;
+}
+
+a.changeIconLink {
+	text-decoration: none;
+}
+
+
+div.pwordChange {
+	width: 70%;
+	position: absolute;
+	left: 30%;
+	top: 10%;
+	margin: 0;
+	height: 40%;
+	
+}
+p.passChangeText {
+	font-size: 11pt;
+}
+
+
+.changePass {
+	position: absolute;
+	left: 80%;
+	top: 98%;
+	width: 20%;
+	padding: 3px;
+	background: transparent;
+	border: 1px solid rgb(0, 60, 140);
+	color: rgb(0, 120, 240);
+	border-radius: 5px;
+	border-bottom-left-radius: 10px;
+	border-top-right-radius: 15px;
+}
+*/

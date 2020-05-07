@@ -1,0 +1,22 @@
+// Example Computer Folder Structure JSON Object
+{
+	"hostname": "<EXAMPLE COMPUTER HOSTNAME>",
+	"ip": "<1.1.1.1>",
+	"owner": "<EXAMPLE OWNER>",
+	"SecLvl": [0, 1, 2, 3],
+	"Data": [
+		{
+			type: "file",
+			filename: "exampleFile.txt",
+			filecontents: "This is an example text file."
+		},
+		{
+			type: "directory",
+			filename: "Example Folder",
+			filecontents: [
+				{type: "file", filename: "exampleFile2.txt", filecontents: "This is another example file."},
+				{type: "file", filename: "exampleFile3.txt", filecontents: "This is the final example file... IN A FOLDER."}
+			]
+		}
+	]
+}

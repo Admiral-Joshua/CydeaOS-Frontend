@@ -1,0 +1,21 @@
+@keyframes shake {
+	25% {
+		position: relative;
+		left: -20px;
+	}
+	75% {
+		position: relative;
+		left: 20px;
+	}
+}
+@keyframes shake2 {
+	25% {
+		position: relative;
+		left: -20px;
+		border-color: red;
+	}
+	75% {
+		position: relative;
+		left: 20px;
+	}
+}

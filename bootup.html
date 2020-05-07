@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<link href="assets/styles/general.css" rel="stylesheet" />
+	<title>CydeaOS - Startup</title>
+   	<style>
+		body {
+			background-color: black;
+			color: white;
+			font-family: OCRAEXT;
+			font-size: 10pt;
+			display:
+		}
+		#bootupText {
+			font-family: OCRAEXT;	
+		}
+		#finalText {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+
+<p id="bootupText"></p>
+
+<textarea id="finalText" whitespace>
+pulseaudio: set_sink_input_volume() failed
+pulseaudio: Reason: Invalid argument
+pulseaudio: set_sink_input_mute() failed
+pulseaudio: Reason: Invalid argument
+Uncompressing Linux... done, booting the kernel.
+Booting Linux on physical CPU 0
+Initializing cgroup subsys cpuset
+Linux version 3.2.0 (karlo@karloh) (gcc version 4.7.3 20130102 (prerelease) (crosstool-NG linaro-1.13.1-4.7-2013.01-20130125 - Linaro GCC 2013.01) ) #7 SMP Thu Feb 28 16:20:18 PST 2013
+CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c53c7d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: ARM-Versatile Express
+Memory policy: ECC disabled, Data cache writealloc
+sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+PERCPU: Embedded 7 pages/cpu @805e9000 s4864 r8192 d15616 u32768
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 32512
+Kernel command line: root=/dev/mmcblk0 rw physmap.enabled=0 console=ttyAMA0
+PID hash table entries: 512 (order: -1, 2048 bytes)
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+Memory: 128MB = 128MB total
+Memory: 124888k/124888k available, 6184k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    vmalloc : 0x88800000 - 0xf8000000   (1784 MB)
+    lowmem  : 0x80000000 - 0x88000000   ( 128 MB)
+    modules : 0x7f000000 - 0x80000000   (  16 MB)
+      .text : 0x80008000 - 0x80473d68   (4528 kB)
+      .init : 0x80474000 - 0x804a0300   ( 177 kB)
+      .data : 0x804a2000 - 0x804c7e20   ( 152 kB)
+       .bss : 0x804c7e44 - 0x804e5ef4   ( 121 kB)
+SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Hierarchical RCU implementation.
+NR_IRQS:128
+Console: colour dummy device 80x30
+Calibrating delay loop... 783.97 BogoMIPS (lpj=3919872)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 1 counters available
+Brought up 1 CPUs
+SMP: Total of 1 processors activated (783.97 BogoMIPS).
+devtmpfs: initialized
+NET: Registered protocol family 16
+L310 cache controller enabled
+l2x0: 8 ways, CACHE_ID 0x410000c8, AUX_CTRL 0x02420000, Cache size: 131072 B
+hw-breakpoint: debug architecture 0x4 unsupported.
+Serial: AMBA PL011 UART driver
+mb:uart0: ttyAMA0 at MMIO 0x10009000 (irq = 37) is a PL011 rev1
+console [ttyAMA0] enabled
+mb:uart1: ttyAMA1 at MMIO 0x1000a000 (irq = 38) is a PL011 rev1
+mb:uart2: ttyAMA2 at MMIO 0x1000b000 (irq = 39) is a PL011 rev1
+mb:uart3: ttyAMA3 at MMIO 0x1000c000 (irq = 40) is a PL011 rev1
+bio: create slab <bio-0> at 0
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+Advanced Linux Sound Architecture Driver Version 1.0.24.
+Switching to clocksource v2m-timer1
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 4096 (order: 3, 32768 bytes)
+TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+TCP: Hash tables configured (established 4096 bind 4096)
+TCP reno registered
+UDP hash table entries: 128 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 128 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+msgmni has been set to 243
+io scheduler noop registered (default)
+clcd-pl11x ct:clcd: PL111 rev2 at 0x10020000
+clcd-pl11x ct:clcd: CT-CA9X4 hardware, XVGA display
+v2m_cfg_write: writing 03c8eee0 to 00110001
+v2m_cfg_write: writing 00000000 to 00710000
+v2m_cfg_write: writing 00000002 to 00b10000
+Console: switching to colour frame buffer device 128x48
+tun: Universal TUN/TAP device driver, 1.6
+tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+smsc911x: Driver version 2008-10-21
+smsc911x-mdio: probed
+smsc911x smsc911x: eth0: attached PHY driver [Generic PHY] (mii_bus:phy_addr=ffffffff:01, irq=-1)
+smsc911x smsc911x: eth0: MAC Address: 52:54:00:12:34:56
+isp1760 isp1760: NXP ISP1760 USB Host Controller
+isp1760 isp1760: new USB bus registered, assigned bus number 1
+isp1760 isp1760: Scratch test failed.
+isp1760 isp1760: can't setup
+isp1760 isp1760: USB bus 1 deregistered
+isp1760: Failed to register the HCD device
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+mousedev: PS/2 mouse device common for all mice
+rtc-pl031 mb:rtc: rtc core: registered pl031 as rtc0
+mmci-pl18x mb:mmci: mmc0: PL181 manf 41 rev0 at 0x10005000 irq 41,42 (pio)
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+aaci-pl041 mb:aaci: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+aaci-pl041 mb:aaci: FIFO 512 entries
+ALSA device list:
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 43
+oprofile: using arm/armv7-ca9
+IPv4 over IPv4 tunneling driver
+TCP cubic registered
+NET: Registered protocol family 17
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 0
+mmc0: host does not support reading read-only switch. assuming write-enable.
+mmc0: new SD card at address 4567
+rtc-pl031 mb:rtc: setting system clock to 2016-06-17 18:57:45 UTC (1466189865)
+mmcblk0: mmc0:4567 QEMU! 1000 MiB 
+ mmcblk0: unknown partition table
+input: AT Raw Set 2 keyboard as /devices/mb:kmi0/serio0/input/input0
+input: ImExPS/2 Generic Explorer Mouse as /devices/mb:kmi1/serio1/input/input1
+VFS: Mounted root (ext2 filesystem) on device 179:0.
+devtmpfs: mounted
+Freeing init memory: 176K
+INIT: version 2.86 booting
+Please wait: booting...
+Starting udev
+WARNING: -e needs -E or -F
+udevd (524): /proc/524/oom_adj is deprecated, please use /proc/524/oom_score_adj instead.
+Remounting root file system...
+Caching udev devnodes
+Populating dev cachemv: can't rename '/tmp/devices': No such file or directory
+ALSA: Restoring mixer settings...
+No state is present for card Interface
+Found hardware: "aaci-pl041" "National Semiconductor LM4549" "AC97a:4e534331" "" ""
+Hardware is initialized using a generic method
+No state is present for card Interface
+Configuring network interfaces... smsc911x smsc911x: eth0: SMSC911x/921x identified at 0x888a0000, IRQ: 47
+eth0      no wireless extensions.
+
+udhcpc (v1.19.4) started
+adding dns 8.8.8.8
+adding dns 208.67.220.220
+Configuring options for nameserver rotation and timeout
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+adding dns 10.0.2.3
+adding dns 8.8.8.8
+adding dns 208.67.220.220
+Configuring options for nameserver rotation and timeout
+done.
+INIT: Entering runlevel: 5
+Creating Dropbear SSH server RSA host key.
+Will output 1024 bit rsa secret key to '/etc/dropbear/dropbear_rsa_host_key'
+Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgwDD3QFuogy2hmtURIq0UuTGJ1aLmsuqQ31yLQVQDxZfxNY34jWAqt9rp3kCNQI3hrKDYQynNCQP9gKyIrjULnKlMzT6GWQr1L6Cmmg3dVq+oMAxbxngGjeeewA9bXzQWREqoh7EcKU16v4yNCUc5o06dA/bNHhIDLIyizFqGgnVs0ZD root@tuttle
+Fingerprint: md5 6c:8b:5c:30:dc:88:c0:0b:0e:e4:e1:62:41:2d:f7:64
+Starting Dropbear SSH server: dropbear.
+Starting telnet daemontelnetd: applet not found
+.
+Starting network benchmark server: netserver.
+Starting syslogd/klogd: done
+Starting thttpd.
+v2m_cfg_write: writing 03c8eee0 to 00110001
+v2m_cfg_write: writing 00000000 to 00710000
+v2m_cfg_write: writing 00000002 to 00b10000
+No SGX hardware, not starting PVR
+FATAL: Module cmemk not found.
+FATAL: Module dsplinkk not found.
+FATAL: Module lpm_omap3530 not found.
+FATAL: Module sdmak not found.
+amixer: Cannot find the given element from control default
+
+amixer: Cannot find the given element from control default
+
+amixer: Unable to find simple control 'Headset',0
+
+umount: /mnt/.psplash: not found
+
+INIT: Id "S" respawning too fast: disabled for 5 minutes
+INIT: no more processes left in this runlevel</textarea>
+
+<script>
+var BootText = document.getElementById("finalText").innerHTML.split("\n");
+var bootLoop;
+function bootProcess() {
+	if (BootText.length > 0) {
+		document.getElementById("bootupText").innerHTML += BootText[0] + '<br/>';
+		window.scrollTo(0, document.body.scrollHeight);
+		BootText.splice(0, 1);
+	} else {
+		setTimeout(function() {
+			document.getElementById("bootupText").innerHTML = '<br/> -------  CydeaOS Bootup Complete  ------- <br/><br/> Startup Complete!<br/><br/>  - Welcome back; '.concat(sessionStorage.getItem("activeUser"));
+			document.getElementById("bootupText").style.fontSize = "16pt";
+			document.body.style.backColor = "rgba(0, 60, 120, 0.4)";
+			setTimeout(function() {
+				window.location.replace("main1.html");
+			}, 1500);
+		}, 1250);
+		clearInterval(bootLoop);
+	}
+}
+
+setTimeout(function() {
+	bootLoop = setInterval(bootProcess, 40);
+}, 550);
+
+
+var audio = new Audio();
+audio.volume = 0.8;
+audio.src = "resources/audio/bootup.wav";
+audio.play();
+</script>
+</body>
+</html>

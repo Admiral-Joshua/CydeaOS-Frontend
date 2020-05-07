@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<link href="assets/styles/general.css" rel="stylesheet" />
+	<link href="assets/animations/fades-01.css" rel="stylesheet" />
+	<link href="assets/styles/watermark.css" rel="stylesheet" />
+	<style>
+		body {
+			font-family: OCRAEXT;
+			font-size: 10pt;
+			white-space: pre;
+			overflow-y: scroll;
+		}
+		p.changelogText {
+			background: transparent;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+		div.cydeaOSbanner {
+			background-color: rgba(0, 60, 120, 0.4);
+			color: rgb(0, 120, 240);
+			font-size: 12pt;
+			font-family: NovaSquare;
+			width: 100%;
+			height: 14%;
+			margin: 0px;
+			padding: 0px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			border-bottom-right-radius: 40px;
+			border-bottom-left-radius: 40px;
+			border-bottom: 1px solid rgb(0, 120, 240);
+		}
+	</style>
+	<title>CydeaOS - Changelog - V1.0.1</title>
+</head>
+
+
+<body>
+	
+<p class="changelogText">
+		---------------  CydeaOS  ---  Change Log  ---  v1.0.1  ---------------
+		
+ - Updated the refresh rate of the music tracks on the server. This should *hopefully* reduce the chances of
+ complete silence client-side. An odd issue some players were experiencing.
+ 
+ - Server-wiped. With very little activity and a lot of random accounts created, we've thought it best to clean
+ things up a bit, and so most players will need to create a new account to continue playing the game.
+ 
+ - Added AUTOCOMPLETE to the Terminal (AT LONG LAST!!) That took some time, and it's not perfect, but it's getting
+ there!
+ 
+ - Fixed an issue that rendered the GRAVE key ` impossible for showing / hiding the terminal. The terminal should
+ be open/showable again now without needing to pop open your browser's console! xD
+ 
+ - Few other minor server bug-fixes, and beginning infrastructure laid out for soon available Team Deathmatch gamemode.
+
+   ________________________________________________________________________________________________________________________
+========================================================================================================================
+	
+	    ---------------  CydeaOS  ---  Change Log  ---  v1.0.0  ---------------
+		
+ - FileViewer / Text Editor was finally added to the game, meaning the contents of files can now be read.
+ 
+ - Added the FileViewer's open ability to be accessible via either clicking elements in the file browser, 
+    or by typing "cat" followed by the file name in the terminal.
+	
+ - Fixed a Music Bug where music would only switch to Dramatic genre once during a hacking sequence, and never
+   again.
+   
+ - Fixed a Text Editor bug where player's weren't able to save their changes to a text file in-game.
+   ________________________________________________________________________________________________________________________
+========================================================================================================================
+	
+	    ---------------  CydeaOS  ---  Change Log  ---  v0.9.7b  ---------------
+	
+--------  What's Changed?  --------	
+
+ - Fixed a bug that occurred last night on the server-side code, causing the server to crash when choosing
+   node-specific IP generation on the Host Game screen.
+   
+ - Rewritten "Garbage Collection" algorithm - hopefully solving issues with in-game changes effecting other games.
+   
+   ________________________________________________________________________________________________________________________
+========================================================================================================================
+
+	    ---------------  CydeaOS  ---  Change Log  ---  v0.9.6b  ---------------
+
+--------  What's Changed?  --------	
+ - Rewritten eng-game protocals on Server-side, should fix crashing / hanging issues when the game timer reaches zero.
+ 
+ - Made version information server-side as it makes my job a LOT easier updating the information as required.
+
+ - Repaired in-game computer IP generation on the server-side, to fix the 'Node Specific' IPs option creating multiple
+   computers with the IP address #RANDOMIP4# or something similar.
+   
+ - Identified and fixed issue where users couldn't log in if more than one account was present on the Home Page.
+ 
+---------  What's New?  ---------
+ - Added new Settings Menu to the Main Menu, allowing for Music and Sound Effect volumes to be changed.
+  <del>account Settings will also be ultimately managed here, once I've got all of that working it will be available.</del>
+   
+ - FINALLY Fixed the Redirect issue we were having with the Icon Setting Page after just creating a new account
+   This should automatically redirect you back to the home page now, notifying you that the update was successful!
+   
+ - Account Settings successfully styled and added to the settings menu! - Adding Changing of Username/Password/Email
+   address on your account.
+
+
+________________________________________________________________________________________________________________________
+========================================================================================================================
+
+	    ---------------  CydeaOS  ---  Change Log  ---  v0.9.5b  ---------------
+
+-----  What's Changed?  -----
+ - Added in a few lines to the server, to protect from the same user being added multiple times!
+   - This SHOULD be fixed now
+
+ - Cleaned up and removed some unnecessary functions, should at least free up a little bit of client-side RAM.
+
+ - Added a secondary check so that the RETURN key does not start taking input into the terminal.
+   All other keys than ENTER and '`' will however redirect further terminal input to the terminal.
+
+ - Gave the Terminal and FileBrowser just enough TLC so that Hiding/Closing Commands & buttons
+   *should* now work first time.
+
+ - Repaired some stuff related to the `pwordcrack` program. This should now get you ADMIN access on all comps
+   INCLUDING the ones without a whitelist server.
+
+ - Rewritten the order that Pwordcrack does it's checks so that the terminal returns at the correct time,
+   instead of too early.
+
+ - Added Server-Side End-Game Screens - That's right... the game *actually* ends too now!
+   - Also updated client-side to show end-game screens too
+
+ - *Hopefully* fixed the bug where game was pretty much restarting upon refreshing the page...
+   hopefully it won't also break reloading the page completely... will be to see
+
+ - Added automatic joining to the join game screen, makes it easier for those who are hosting and joining
+    the same game as it will automatically take the code from the Host Game you have open and attempt to join.
+
+</p>
+</body>
+
+</html>

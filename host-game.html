@@ -1,0 +1,441 @@
+<html>
+
+<head>
+	<link href="assets/styles/general.css" rel="stylesheet"/>
+	<link href="assets/animations/fades-01.css" rel="stylesheet"/>
+	<link href="assets/animations/flashes-01.css" rel="stylesheet"/>
+	<link href="assets/animations/modules-01.css" rel="stylesheet" />
+	<link href="assets/styles/countdown.css" rel="stylesheet" />
+    <link href="assets/styles/watermark.css" rel="stylesheet" />
+    <title>Host Game - CydeaOS</title>
+	<style>
+		button {
+			width: 110px;
+			height: 40px;
+			background-color: transparent;
+			border: 2px solid rgb(0, 120, 240);
+			color: rgb(0, 120, 240);
+			font-family: NovaSquare;
+			position: relative;
+			left: 25%;
+			top: -40px;
+		}
+		button#creationBtn {
+			top: -65px;
+		}
+		div#GameOptions {
+			width: 40%;
+			height: 25%;
+			text-align: center;	
+			position: absolute;
+			top: 42%;
+			left: 30%;
+			border: 1px solid rgba(0, 120, 240, 0.4);
+			//border-radius: 25px;
+			border-radius: 10px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 35px;
+			animation: notify-open 1s forwards;
+			background-color: rgba(0, 60, 120, 0.3);
+		}
+		
+		div#joinDisplay {
+			width: 45%;
+			height: 30%;
+			background-color: rgba(0, 60, 120, 0.3);
+			border-radius: 20px;
+			border-top-right-radius: 40px;
+			border-bottom-left-radius: 30px;
+			position: absolute;
+			top: 35%;
+			left: 27.5%;
+			display: none;
+			opacity: 0;
+			z-index: 2;
+		}
+		input#timeLeft {
+			font-size: 18pt;
+			color: rgb(0, 120, 240);
+			text-align: center;
+			width: 50px;
+			background-color: transparent;
+			border: none;
+			font-family: NovaSquare;
+		}
+		p {
+			font-size: 18pt;
+			text-align: center;
+			padding: 5px;
+			margin: 2px 10px;
+		}
+		em.gameCodeOut {
+			font-size: 36pt;
+			font-style: normal;
+			text-align: center;
+		}
+		p.gameIpLabel {
+			font-size: 14pt;
+			color: rgb(0, 120, 240);
+			text-align: left;
+		}
+		div.ipOptions {
+			width: 200px;
+		}
+		select.cydeaSelection {
+			font-size: 12pt;
+			color: rgb(0, 120, 240);
+			background-color: transparent;
+			overflow: hidden;
+			border: none;
+			font-family: NovaSquare;
+			padding: 5px;
+		}
+		p.share {
+			font-size: 12pt;
+			text-align: center;
+			color: rgb(0, 80, 140);
+		}
+		div.timerOptions {
+			width: 200px;
+			position: absolute;
+			top: 18%;
+			left: 270px;
+		}
+		p.musicLabel {
+			font-size: 14pt;
+			text-align: left;
+		}
+		p.timeLeftLabel {font-size: 14pt;}
+		button#startGameBtn {
+			background-color: transparent;
+			border: 1px solid rgb(0, 100, 200);
+			border-radius: 10px;
+			border-bottom-right-radius: 30px;
+			border-top-left-radius: 25px;
+			position: relative;
+			left: 75%;
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+
+<div id="ScaledContent">
+	<img class="backgroundImg bgImage" src="assets/binary-8.jpg"></img>
+	<div id="theNetwork">
+		<style>
+			div.theNetwork {
+				text-align: center;
+				width: 100%;
+				height: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			.compNode {
+				width: 150px;
+				height: 150px;
+				border-radius: 100px;
+				background-color: rgb(160, 30, 20);
+				color: rgb(0, 180, 255);
+				text-align: center;
+				margin: 50px;
+				display: inline-block;
+				animation: zoom-in 1s forwards;
+			}
+			.compNode2 {
+				width: 150px;
+				height: 150px;
+				border-radius: 100px;
+				background-color: rgb(0, 60, 120);
+				color: rgb(0, 180, 255);
+				text-align: center;
+				margin: 50px;
+				display: inline-block;
+				animation: zoom-in 1s forwards;
+			}
+			p#nodeText {
+				position: relative;
+				top: 48px;
+				font-size: 14pt;
+			}
+			.eliminated {
+				background-color: rgb(50, 50, 60);
+				color: rgb(120, 120, 120);
+			}
+			em#timeLbl {
+				font-size: 16pt;
+				font-style: normal;
+			}
+			em#playerNumber {
+				font-size: 16pt;
+				font-style: normal;
+			}
+			@keyframes zoom-in {
+				0% {
+					width: 0;
+					height: 0;
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			img.backgroundImg {
+				object-fit: fill;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				animation: pulse 4s infinite;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				z-index: -1;
+			}
+			.bgImage {
+				animation: background-in 1.5s forwards;
+			}
+		</style>
+	
+		<!--div class="compNode exampleNode"><p id="nodeText">EXAMPLE NODE</p></div>
+		<div class="compNode2 exampleNode"><p id="nodeText">Admiral Joshua</p></div>
+		<div class="compNode exampleNode"><p id="nodeText">The Judge</p></div>
+		<div class="compNode2 exampleNode"><p id="nodeText">Someguy</p></div>
+		<div class="compNode exampleNode"><p id="nodeText">EXAMPLE NODE</p></div>
+		<div class="compNode2 exampleNode"><p id="nodeText">EXAMPLE NODE</p></div>
+		<div class="compNode exampleNode eliminated"><p id="nodeText">ELIMINATED EXAMPLE</p></div-->
+	</div>
+
+	<div id="GameOptions">
+		<p class="titlebar"><em class="titlebar-Text">CydeaOS - Multiplayer Game Setup</em></p>
+		<div class="ipOptions">
+			<p class="gameIpLabel">IP Address Type:</p>
+			<select size="3" class="cydeaSelection" id="gameIpType">
+				<option> - Node Specific (Mixed)</option>
+				<option> - In-Game IPv4</option>
+				<option> - In-Game IPv6</option>
+			</select>
+		</div>
+		<div class="timerOptions">
+			<p class="timeLeftLabel">Time Allowed In Game:</p>
+			<input type="text" id="timeLeft" value="20"><em id="timeLbl">mins</em></input>
+		</div>
+        <div class="musicOptions">
+        	<p class="musicLabel">Where do you want music to play?</p>
+        	<select class="cydeaSelection" size="2" id="musicType">
+            	<option> - Server Side</option>
+                <option> - Client Side</option>
+            </select>
+		</div>
+    	<button id="creationBtn" onClick="createGame()">Create Game</button>
+    </div>
+	
+	<div id="joinDisplay">
+		<p class="titlebar"><em class="titlebar-Text">CydeaOS - Game Creation Success!</em></p>
+		<p style="text-align: left;">Welcome to CydeaOS!</p>
+		<p id="codePrompt">Game Creation was successful! Your join code is:</p>
+		<p><em class="gameCodeOut" id="gameCode">476795</em></p>
+		<p class="share">Share this with anyone who you want to add to the game.<br/>
+        <em id="playerNumber">Players Joined: 0/24</em></p>
+		<button onClick="attemptStart()" id="startGameBtn">Start Game</button>
+	</div>
+	
+	<div id="countdownContainer">
+		<p id="countReadout">3</p>
+	</div>
+	
+    <div class="cornerText">
+		<p class="postText"><em class="blue">Cydea</em><em class="red">OS</em></p>
+		<p class="versionText"><a href="changelog.txt" id="versionOut">Build Version 0.9.5</a></p>
+		<script type="text/javascript" src="assets/scripts/versionInfo.js"></script>
+	</div>
+</div>
+	
+</body>
+
+<script type="text/javascript" src="assets/socket.io.js"></script>
+<script type="text/javascript" src="assets/scripts/startCountdown.js"></script>
+<script type="text/javascript" src="assets/scripts/scalePage.js"></script>
+
+<script type="text/javascript">
+
+	//var socket = io.connect("http://127.0.0.1:4003");																		// FOR TESTING
+	socket = io.connect("https://cydeaos.lunasphere.co.uk:4003", {secure: true, reconnect: false, rejectUnauthorized: false}); 		// FOR WHEN ONLINE
+
+	var CurrentGameID = "";
+	var PlayerCount = 0;
+	var socket;
+	var TimeLeftMin = 0;
+	var TimeLeftSec = 0;
+
+	// EXAMPLE HTML CODE FOR MY PLAYER ICONs
+	//<div class="compNode2 exampleNode"><p id="nodeText">Admiral Joshua</p></div>
+	//<div class="compNode exampleNode"><p id="nodeText">The Judge</p></div>
+	function AddPlayer(playerName, playerStatus) {
+		PlayerCount++;
+		var compIconContainer = document.createElement("div");
+		if (PlayerCount % 2 == 0) {
+			compIconContainer.className = "compNode exampleNode";
+		} else {
+			compIconContainer.className = "compNode2 exampleNode";
+		}
+		if (playerStatus === "eliminated") {
+			compIconContainer.className = compIconContainer.className + " eliminated";
+		}
+		var playerNameReadout = document.createElement("p");
+		playerNameReadout.id = "nodeText";
+		playerNameReadout.innerHTML = playerName;
+		compIconContainer.appendChild(playerNameReadout);
+		document.getElementById("playerNumber").innerHTML = "Players Joined: " + PlayerCount.toString() + "/24";
+		document.getElementById("theNetwork").appendChild(compIconContainer);
+		
+		if (PlayerCount >= 1) {
+			document.getElementById("startGameBtn").style.display = "block";
+			document.getElementById("startGameBtn").style.animation = "zoom-in 2s forwards";
+		}
+	}
+	
+	function attemptStart() {
+		console.log("Game Starting... hopefully...");
+		document.getElementById("joinDisplay").style.animation = "notify-close 2s 1s forwards";
+		document.getElementById("joinDisplay").style.opacity = "1";
+		socket.emit("serverReq", {type: "startGame", code: CurrentGameID});
+	}
+	
+	socket.on("serverRes", function(msg) {
+		if (msg.code == CurrentGameID) {
+			if (msg.type == "addPlayer") {
+				console.log(msg);
+				AddPlayer(msg.playerName.toString(), "Online");
+			}
+			if (msg.type === "startGame") {
+				if (localStorage.getItem("activeCode") == null || localStorage.getItem("activeCode") == "undefined") {
+					localStorage.setItem("activeCode", CurrentGameID);	
+				}
+				window.location.replace("main2.html");
+			}
+		}
+	});
+	
+	/*setTimeout(function() {
+		countdownContainer = document.getElementById("countdownContainer");
+		countdownContainer.style.display = "block";
+		countdownContainer.style.animation = "notify-open 1s forwards";
+		setTimeout(function() {
+			MainCountdown();
+		}, 1000);
+	}, 2000);*/
+	
+	if (localStorage.getItem("activeCode") != null && localStorage.getItem("activeCode") != "" && localStorage.getItem("activeCode") != "null") {
+		CurrentGameID = localStorage.getItem("activeCode");
+		document.getElementById("creationBtn").style.disabled = true;
+		document.getElementById("codePrompt").innerHTML = "Attemping to reconnect to the following gamecode...";
+		setTimeout(function() {switchWindows(CurrentGameID)}, 600);
+		setTimeout(function() {
+			socket.emit('serverReq', {type:"checkCode", code: CurrentGameID});
+			socket.on('serverRes', function(response) {
+				setTimeout(function() {
+					//console.log(response);
+					if (response.type == "codeTest") {
+						if (response.code === CurrentGameID) {
+							if (response.response === "Failure!" || response.gameStatus !== "waiting") {
+								switchWindows1(CurrentGameID);
+								document.getElementById("codePrompt").innerHTML = "Reconnect Failed... Returning to creation menu";
+								localStorage.setItem("activeCode", "");
+							} else {
+								document.getElementById("codePrompt").innerHTML = "Game Reconnect Successful! Your join code is:";
+								if (response.playerObjects.length > 0) {
+									for (y = 0; y < response.playerObjects.length; y++) {
+										console.log(response.playerObjects[y]);
+										AddPlayer(response.playerObjects[y].username, response.playerObjects[y].status);
+									}
+								}
+							}
+						}
+					}
+				}, 1000);
+			});
+		}, 1000);
+	}
+	
+	function createGame() {
+		PlayerCount = 0;
+		var gameIpType = document.getElementById("gameIpType").value;
+		var gameTimer = document.getElementById("timeLeft").value;
+		var musicOption = document.getElementById("musicType").value;
+		if (musicOption.indexOf("- Server Side") != -1) {
+			musicOption = "server-side";
+		} else if (musicOption.indexOf("Client Side") != -1) {
+			musicOption = "client-side";	
+		} else {
+			musicOption = "client-side";
+		}
+		if (gameIpType > -1 && gameIpType < 3) {
+			alert("Please select a valid IP Address Type");
+		}
+		else {
+			if (gameTimer == "") {
+				alert("Please ensure you have entered a valid amount of time.");
+			} else {
+				try {
+					gameTimer = parseInt(gameTimer);
+					try {
+						var IpType;
+						if (gameIpType == "- Node Specific (Mixed)") {
+							IpType = "auto";
+						} else if (gameIpType == "- In-Game IPv4") {
+							IpType = "ipv4";
+						} else if (gameIpType == "- In-Game IPv6") {
+							IpType = "ipv6";
+						}
+						socket.emit('serverReq', {type:"createGame", gameSettings: {ipType: IpType, timer: gameTimer, musicMode: musicOption}});
+						localStorage.setItem("GameLength", (gameTimer * 60));
+						socket.on('serverRes', function(status) {
+							if (status.type == "creationResponse") {
+								console.log(status);
+								if (status.Status === "Creation Success!") {
+									//alert("New Game Code Received: " + status.Code);
+									document.getElementById("codePrompt").innerHTML = "Game Creation was successful! Your join code is:";
+									switchWindows(status.Code);
+									CurrentGameID = status.Code;
+									localStorage.setItem("activeCode", status.Code);
+								} else {
+									alert("Server is unavailable, please try again later!");
+								}
+							}
+						});
+					} catch (ex) {
+						alert("Server is unavailable, please try again later!");	
+					}
+				} catch (ex) {
+					alert("Please ensure you have entered a valid amount of time.");
+				}
+			}
+		}
+	}
+	
+	function switchWindows(gameCode) {
+		document.getElementById("joinDisplay").style.display = "block";
+		document.getElementById("joinDisplay").style.opacity = "0";
+		document.getElementById("joinDisplay").style.animation = "notify-open 2s .5s forwards";
+		document.getElementById("GameOptions").style.animation = "notify-close 2s forwards";
+		document.getElementById("gameCode").innerHTML = gameCode;
+	}
+	function switchWindows1(gameCode) {
+		setTimeout(function() {
+			document.getElementById("joinDisplay").style.animation = "notify-close 2s 1s forwards";
+			document.getElementById("joinDisplay").style.opacity = "1";
+			document.getElementById("GameOptions").style.opacity = "0";
+			document.getElementById("GameOptions").style.animation = "notify-open 2s 1.5s forwards";
+			document.getElementById("gameCode").innerHTML = gameCode;
+			setTimeout(function() {
+				document.getElementById("joinDisplay").style.display = "none"
+			}, 3000);
+		}, 1000);
+	}
+	
+</script>
+<script type="text/javascript" src="assets/scripts/versionInfo.js"></script>
+<script type="text/javascript" src="assets/scripts/audio mixer/Main Menu Mixer.js"></script>
+</html>

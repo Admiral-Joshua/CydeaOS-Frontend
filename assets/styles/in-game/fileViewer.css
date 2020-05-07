@@ -1,0 +1,91 @@
+div#fileViewer {
+	width: 40%;
+	height: 45%;
+	position: absolute;
+	left: 30%;
+	top: 18%;
+	margin: 0px;
+	background-color: rgba(0, 50, 100, 0.5);
+	border-radius: 10px;
+	border-top-right-radius: 35px;
+	overflow: hidden;
+	display: hidden;
+	z-index: 7;
+	display: none;
+}
+textarea#fileContents {
+	width: 98%;
+	height: 86%;
+	position: absolute;
+	left: 1%;
+	top: 13%;
+	margin: 0px;
+	background-color: rgba(20, 70, 90, 0.2);
+	disabled: false;
+	font-size: 10pt;
+	font-family: OCRAEXT;
+	border-radius: 5px;
+	border: .5px solid rgb(0, 60, 120);
+}
+
+div.contextMenu {
+	margin: 0px;
+	position: absolute;
+	width: 95%;
+	left: 2.5%;
+	height: 25px;
+	top: 25px;
+	background-color: rgba(20, 70, 90, 0.2);
+	border-radius: 5px;
+	border: .5px solid rgb(0, 60, 120);
+	
+}
+p.menuItem {
+	width: 100%;
+	height: 18px;
+	font-size: 12pt;
+	font-family: NovaSquare;
+	margin: 0px 0px 0px 5px;
+	padding: 2px;
+	border-radius: 2px;
+	background-color: rgb(0, 20, 60);
+	cursor: pointer;
+}
+p.menuItem:hover {
+	background-color: rgb(0, 30, 90)
+}
+.itm01:hover itm01menu {
+	display: block;
+}
+
+p.contextItem {
+	font-size: 12pt;
+	font-family: NovaSquare;
+	color: rgb(0, 120, 240);
+	margin: 0px 30px 0px 20px;
+	display: inline;
+	padding: 0px;
+	position: relative;
+	top: -12px;
+}
+p.contextItem:hover {
+	color: rgb(0, 180, 255);
+	cursor: pointer;
+}
+
+div.contextMenu2 {
+	width: 150px;
+	height: 50px;
+	z-index: 1;	
+	background: transparent;
+	display: none;
+	position: absolute;
+	
+	top: 25px;
+}
+.itm01menu {
+	left: 2px;
+}
+.itm02menu {
+	left: 102px;
+}

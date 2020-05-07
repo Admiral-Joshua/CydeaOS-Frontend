@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html><script>var pmblock = 1.3;</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>CydeaOS - Home</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+        <link href="assets/styles/general.css" rel="stylesheet">
+		<link href="assets/animations/modules-01.css" rel="stylesheet">
+		<link href="assets/animations/flashes-01.css" rel="stylesheet">
+		<link href="assets/animations/fades-01.css" rel="stylesheet">
+        <link href="assets/styles/main-menu/main-menu.css" rel="stylesheet">
+		<link href="assets/styles/settings.css" rel="stylesheet">
+        <link href="assets/styles/watermark.css" rel="stylesheet">
+        <style>
+			button {
+				border: 1px solid rgb(0, 60, 120);
+				border-radius: 10px;
+				border-bottom-left-radius: 30px;
+				border-top-right-radius: 40px;
+			}
+            p {
+                margin: 10px 15px;
+            }
+            p.mainMenuTxtSmall {
+                font-size: 11pt;
+            }
+            div.accountContainer {
+                width: 95%;
+                height: 180px;
+                overflow-y: hidden;
+                overflow-x: hidden;
+                border: 1px solid rgba(0, 120, 240, 0.3);
+                position: relative;
+                top: -5px;
+                left: 10px;
+				border-radius: 5px;
+				border-top-right-radius: 20px;
+				border-bottom-left-radius: 15px;
+				padding: 5px;
+            }
+            div.accountContainer:hover {
+                overflow-y: auto;
+            }
+            div.accContainer {
+                width: 98%;
+                height: 90px;
+                border: 1px solid rgba(0, 120, 240, 0.3);
+                position: relative;
+                border-radius: 30px;
+                left: 5px;
+            }
+            div.accContainer:hover {
+                background-color: rgba(0, 120, 240, 0.08);
+            }
+            img.accIcon {
+                width: 80px;
+                height: 80px;
+                margin: 0px 5px;
+				border-radius: 50px;
+				overflow: hidden;
+				object-fit: cover;
+            }
+            .accName {
+                font-size: 19pt;
+                position: relative;
+				font-style: normal;
+				//font-weight: bold;
+				font-family: NovaSquare;
+                left: 15px;
+				color: rgb(0, 160, 240);
+                top: -50px;
+				background-color: transparent;
+				border: none;
+            }
+            input.accPass {
+                width: 58%;
+                position: relative;
+                top: -50px;
+                left: 90px;
+                font-size: 14pt;
+                font-family: NovaSquare;
+                background-color: transparent;
+                border: 1px solid rgba(0, 120, 240, 0.4);
+                border-radius: 10px;
+                padding: 5px 4px;
+				color: rgb(0, 120, 240);
+				text-align: center;
+            }
+			@keyframes background-in {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 0.1;
+				}
+			}
+			.bgVideo {
+				z-index: 0;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 80%;
+				height: 90%;
+				left: 10%;
+				top: 5%;	
+				opacity: 0.6;
+			}
+			div.manLogin {
+				width: 30%;
+                height: 25%;
+                position: absolute;
+                top: 32.5%;
+                left: 35%;
+                border: 1px solid rgb(0, 120, 240);
+                border-radius: 15px;
+                border-bottom-right-radius: 40px;
+                border-top-left-radius: 20px;
+				background-color: rgba(0, 40, 90, 0.6);
+				display: none;
+				//animation: notify-open 1.5s forwards;
+			}
+			div.register {
+				width: 30%;
+                height: 40%;
+                position: absolute;
+                top: 30%;
+                left: 35%;
+                border: 1px solid rgb(0, 120, 240);
+                border-radius: 15px;
+                border-bottom-right-radius: 40px;
+                border-top-left-radius: 20px;
+				background-color: rgba(0, 40, 90, 0.6);
+				display: none;
+				text-align: center;
+				//animation: notify-open 1.5s forwards;
+			}
+			input.manInput { 
+				font-size: 14pt;
+				color: rgb(0, 120, 240);
+				background-color: transparent;
+				text-align: center;
+				font-family: NovaSquare;
+				border: 1px solid rgb(0, 60, 120);
+				border-radius: 10px;
+				border-bottom-left-radius: 30px;
+				border-top-right-radius: 40px;
+				padding: 5px;
+				width: 60%;
+				position: relative;
+				//left: 20%;
+			}
+			input#usernameInput {
+				left: 16%;
+			}
+			input#passwordInput {
+				position: relative;
+				left: 24%;
+			}
+			button.goBackBtn {
+				font-size: 12pt;
+				color: rgb(0, 120, 240);
+				font-family: NovaSquare;
+				background-color: transparent;
+				width: 110px;
+				height: 14%;
+				position: absolute;
+				left: 15px;
+				top: 84%;
+			}
+			button.loginBtn {
+				font-size: 12pt;
+				color: rgb(0, 120, 240);
+				font-family: NovaSquare;
+				background-color: transparent;
+				width: 100px;
+				height: 14%;
+				position: absolute;
+				left: 80%;
+				top: 84%;
+				border-bottom-left-radius: 10px;
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 30px;
+				border-top-left-radius: 40px;
+			}
+			h2.manTitle {
+				font-size: 24pt;
+				color: rgb(0, 120, 240);
+				position: relative;
+				left: 20px;
+				margin: 10px 15px;
+			}
+			p.manLabel {
+				font-size: 13pt;
+				color: rgb(0, 100, 160);
+				margin: 10px 5px 5px 20px;
+			}
+			div.mainMenu {
+				margin: 0px;
+				padding: 0px;
+                border: 1px solid rgb(0, 120, 240);
+                border-radius: 15px;
+                border-bottom-right-radius: 40px;
+                border-top-left-radius: 30px;
+				background-color: rgba(0, 40, 90, 0.6);
+				//animation: notify-open 1.5s forwards;
+				display: none;
+				width: 30%;
+                height: 50%;
+                position: absolute;
+				top: 25%;
+				left: 35%;
+            }
+			
+			img.backgroundImg {
+				object-fit: fill;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				animation: pulse 4s infinite;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				z-index: -1;
+			}
+			.bgImage {
+				animation: background-in 1.5s forwards;
+			}
+			button.quickLogin {
+				height: 60px;
+				width: 60px;
+				position: absolute;
+				left: 83%;
+				color: rgb(0, 160, 255);
+				top: 15px;
+				border-radius: 40px;
+				text-align: center;
+				font-size: 14pt;
+				background-color: rgba(0, 80, 160, 0.6);
+			}
+			div#loginContents {
+				background-color: transparent;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				//display: none;
+			}
+			div#mainContents {
+				background-color: transparent;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				display: none;
+			}
+			.halfBtn {
+				width: 40%;
+			}
+			
+        </style>
+    </head>
+    <body>
+		<img class="backgroundImg bgImage" src="assets/binary-8.jpg">
+		<!--video class="backgroundImg bgVideo" loop autoplay>
+			<source src="resources/Hacking in Films Montage - Square.mp4" type="video/mp4">
+		</video-->
+		<div id="ScaledContent">
+			<div class="mainMenu" style="display: none;">
+				<p id="welcomeMsg" class="mainMenuTxt">Welcome to CydeaOS</p>
+				<div id="loginContents" style="display: block;">
+				<p class="mainMenuTxtSmall">Please select an account below or login.</p>
+				<div class="accountContainer" id="accountOverview"><div class="accContainer"><img class="accIcon" id="accIcon0" src="assets/PlayerIcons/Anime02.png"><input class="accName" id="accName0" disabled=""><button class="quickLogin" id="accBtn0">-&gt;</button><input class="accPass" type="password" id="accPass0" placeholder="Password" autocomplete="off"></div></div>
+				<button onclick="ShowManualLogin()" class="menuBtn">Login Manually</button>
+				<button onclick="ShowRegister()" class="menuBtn">Create Account</button>
+				</div>
+				<div id="mainContents" style="display: none;">
+					<p class="mainMenuTxtSmall">Select an option from below. Host Game will allow you to create a game other players can join. Join game let's you join other games.</p>
+					<button class="menuBtn" onclick="hostGame()">Host a Game</button>
+					<button class="menuBtn" onclick="joinGame()">Join a Game</button><br><br>
+					<button class="menuBtn halfBtn" onclick="Logout()">Logout</button>
+				</div>
+			</div> 
+			<div class="manLogin" style="animation: notify-close 1.5s forwards; display: none;">
+				<h2 class="manTitle">Login</h2>
+				<p class="manLabel">Enter in your account details below, and then click the login button.</p>
+				<input class="manInput" type="text" id="usernameInput" placeholder="Username" style=" autocomplete="off"><br>
+				<input class="manInput" type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+				<button class="loginBtn" id="loginBtn" onclick="SubmitLogin()">Login</button>
+				<button class="goBackBtn" onclick="ShowMainMenu()">Go Back</button>
+			</div> 
+			<div class="register" style="animation: notify-close 1.5s forwards; display: none;">
+				<h2 class="manTitle">Register</h2>
+				<p class="manLabel">Enter your desired account details and contact details below.</p>
+				<input class="manInput" type="text" id="usernameInputReg" placeholder="Username" autocomplete="off"><br>
+				<input class="manInput" type="email" id="emailInputReg" placeholder="Contact Email"><br>
+				<input class="manInput" type="password" id="passwdInputReg" placeholder="Password"><br>
+				<input class="manInput" type="password" id="passwdInputReg2" placeholder="Confirm Password"><br>
+				<button class="loginBtn" id="registerBtn" onclick="SubmitRegister()">Register</button>
+				<button class="goBackBtn" onclick="ShowMainMenu()">Go Back</button>
+			</div>
+            <!--button>Getting Started</button>
+            <button>About the Game</button-->
+        </div>
+    
+		<div class="cornerText2">
+			<p class="serverStatus">Server Status: <em id="serverStatusOutput">Checking...</em></p>
+		</div>
+        <div class="cornerText">
+        	<p class="postText"><em class="blue">Cydea</em><em class="red">OS</em></p>
+            <p class="versionText"><a href="changelog.html" id="versionOut">Getting Info...</a></p>
+        </div>
+		
+		<div id="settingsMenu">
+			<h1 class="settingsTitle">CydeaOS - Settings</h1>
+			<h2 class="settingsText">Here you can change settings that effect in-game elements. - Please note some changes may require a page reload.</h2>
+			<div class="soundSettings">
+				<p class="settingHeader"> ----- Audio and Other Settings----- </p>
+				<p class="inputLbl">Music Volume: <input class="settingsSlider1" onchange="TempModify()" oninput="TempModify()" id="musicVol" type="range" min="0" max="1" step="0.01"><em class="sliderOutput" id="musicVolOut">0.85</em></p><br/>
+				<p class="inputLbl">Sound Volume: <input class="settingsSlider1" onchange="TempModify2()" oninput="TempModify()" id="sfxVol" type="range" min="0" max="1" step="0.01"><em class="sliderOutput" id="sfxVolOut">1</em></p><br/>
+				<p class="inputLbl">Current X-Server Theme:</p>
+				<select id="themeVersion">
+					<option value="hacknet-orange">Hacknet (Orange)</option>
+					<option value="default-blue">Default (Cyan)</option>
+				</select>
+				<button class="applyBtn" onclick="ApplyAudioChanges()">Apply</button>
+			</div>
+			
+			<div class="accountSettings">
+				<p class="settingHeader"> ----- Account Settings ----- </p>
+				<div class="notLoggedInPrompt" id="notLoggedIn"><br><br><br><br>Not Logged In</div>
+				<div class="accOverview">
+					<img class="accIcon" onclick="ShowIconUpdatePage()" id="settingsIcon">
+					<h2 id="accNameSetHeader">MY USERNAME</h2>
+					<p class="accIconTxt" onclick="ShowIconUpdatePage()">Click to Change...</p>
+				</div>
+				<ul class="navigation">
+					<li id="nav1" class="navLink" onclick="ShowInputForm('passwordChange')">Password</li>
+					<li id="nav2" class="navLink" onclick="ShowInputForm('usernameChange')">Username</li>
+					<li id="nav3" class="navLink" onclick="ShowInputForm('emailChange')">Email</li>
+				</ul>
+				<div class="changeForm" id="passwordChange">
+					<input class="changeInput pChange1" type="password" id="passwdInputChange" placeholder="Current Pass" autocomplete="off"><br>
+					<input class="changeInput pChange2" type="password" id="passwdInputChange2" placeholder="New Pass" ><br>
+					<input class="changeInput pChange3" type="password" id="passwdInputChange3" placeholder="Confirm Pass"><br>
+					<button class="applyBtn" onclick="submitNewPassword()">Save</button>
+				</div>
+				<div class="changeForm" id="emailChange">
+					<input class="changeInput pChange2" type="email" id="emailInputChange" placeholder="New Email"><br>
+					<input class="changeInput pChange1" type="password" id="emailInputChange2" placeholder="Current Pass" autocomplete="off"><br>
+					<button class="applyBtn" onclick="submitNewEmail()">Save</button>
+				</div>
+				<div class="changeForm" id="usernameChange">
+					<input class="changeInput pChange1" type="text" id="usernameInputChange" placeholder="New Username" autocomplete="off">
+					<input class="changeInput pChange2" type="password" id="usernameInputChange2" placeholder="Current Pass" autocomplete="off">
+					<button class="applyBtn" onclick="submitNewUsername()">Save</button>
+				</div>
+			</div>
+			
+			<!--div class="accountSettings">
+				
+				<div class="notLoggedInPrompt" id="notLoggedIn"><br/><br/><br/><br/>Not Logged In</div>
+				<div class="accSettings">
+					<div class="accIconChanger">
+						
+						<a class="changeIconLink" href="set-icon.html"><img class="accIcon" id="settingsIcon" /><p class="accIconTxt">Click to Change Icon...</p></a>
+					</div>
+					<ul class="navigation">
+						<li class="navLink-selected">Password</li>
+						<li class="navLink">Username</li>
+						<li class="navLink">Email</li>
+					</ul>
+					<h2 id="accNameSetHeader">MY USERNAME</h2>
+					<div class="pwordChange">
+					<p class="passChangeText">Change your Password:</p>
+					<input class="changeInput" type="password" id="passwdInputChange" placeholder="Current Pass"></input><br/>
+					<input class="changeInput" type="password" id="passwdInputChange2" placeholder="New Pass"></input><br/>
+					<input class="changeInput" type="password" id="passwdInputChange3" placeholder="Confirm Pass"></input><br/>
+					<input type="submit" class="changePass" value="Change"></input>
+					</div>
+				</div>
+				
+				<p class="inputLbl">Music Volume: <input class="settingsSlider1" oninput="TempModify()" id="musicVol" type="range" min="0" max="1" step="0.01"><em class="sliderOutput" id="musicVolOut">0.5</em></p><br/>
+				<p class="inputLbl">Sound Volume: <input class="settingsSlider1" oninput="TempModify()" id="sfxVol" type="range" min="0" max="1" step="0.01"><em class="sliderOutput" id="sfxVolOut">0.5</em></p>
+			</div-->			
+		</div>
+		
+		<button class="settingsLink" id="settingsLink" onclick="ShowSettings()">SETTINGS</button>
+    
+	<!--script type="text/javascript" src="assets/socket.io.js"></script-->
+	<script type="text/javascript" src="assets/socket.io.js"></script>
+	
+	<script type="text/javascript">
+	var socket = io.connect("https://cydeaos.lunasphere.co.uk:4003", {secure: true, reconnect: false, rejectUnauthorized: false});// FOR WHEN ONLINE
+	
+	socket.on("connect_error", function() {
+		document.getElementById("versionOut").innerHTML = "Build Version <em style='color: red;'>Unavailable<//em>";
+		serverStatus.innerHTML = "Offline";
+		serverStatus.style.color = "red";
+	});
+				
+		//require('https').globalAgent.options.rejectUnauthorized = false; 
+		//var socket = io('http://127.0.0.1:4003', { transport : ['websocket'] });		// FOR TESTING
+		function SubmitLogin() {
+			var EnteredUsername = document.getElementById("usernameInput").value;
+			var EnteredPassword = document.getElementById("passwordInput").value;
+			
+			if (EnteredPassword.length < 4) {
+				alert("Error - Invalid Password - Please make sure it is at least 4 characters long.");
+			} else if (EnteredUsername.length == 0) {
+				alert("Error - Invalid Username - Please ensure to type a username into the textbox.");
+			} else {			
+				socket.emit("loginReq", {type: "login", username: EnteredUsername, password: EnteredPassword});
+				document.getElementById("loginBtn").disabled = true;
+			}
+		}
+		function QuickLogin(targetName, targetPass) {
+			//console.log("Name: " + targetName + " , Pass: " + targetPass);
+			NameActual = document.getElementById(targetName).value;
+			PassActual = document.getElementById(targetPass).value;
+			socket.emit("loginReq", {type: "login", username: NameActual, password: PassActual});
+		}
+		function SubmitRegister() {
+			var DesiredUsername = document.getElementById("usernameInputReg").value;
+			var ContactEmail = document.getElementById("emailInputReg").value;
+			var Password1 = document.getElementById("passwdInputReg").value;
+			var Password2 = document.getElementById("passwdInputReg2").value;
+			if (Password1 == Password2) {
+				if (DesiredUsername.length < 1) {
+					alert("Register Failure! - No username was entered, please try again!");
+				} else if (Password1.length < 4) {
+					alert("Register Failure! - Password must be at least 4 characters!");
+				} else {
+					socket.emit("loginReq", {type: "register", username: DesiredUsername, email: ContactEmail, password: Password1});
+					document.getElementById("register").disabled = true;
+				}
+			} else {
+				alert("Register Failure - Passwords do not match, please try again.");
+			}
+		}
+		function Logout() {
+			sessionStorage.setItem("activeUser", "");
+			ShowMainMenu();
+		}
+		
+		socket.on("loginRes", function(msg) {
+			if (msg.type == "login") {
+				if (msg.response != "Success!") {
+					alert("Login Failure! - " + msg.response);
+				} else {
+					sessionStorage.setItem("activeUser", msg.username);
+					saveAcc(msg.username, msg.image);
+					ShowMainMenu();
+				}
+				document.getElementById("loginBtn").disabled = false;
+			} else if (msg.type == "register") {
+				if (msg.response != "Success!") {
+					alert(msg.response);
+				} else {
+					sessionStorage.setItem("activeUser", msg.username);
+					saveAcc(msg.username, null);
+					window.location.href = "set-icon.html";
+					ShowMainMenu();
+				}
+				document.getElementById("register").disabled = false;
+			} else if (msg.type == "passUpdate" || msg.type == "emailUpdate") {
+				alert(msg.response);
+				if (msg.response.toLowerCase().indexOf("success") !== -1) {
+					HideSettings();
+					setTimeout(function() {
+						sessionStorage.setItem("activeUser", "");
+						if (msg.response.toLowerCase().indexOf("user") !== -1) {
+							var AccountToRemove = msg.response.toString().split("'")[1].toString();
+							//localStorage.setItem("savedAccs", null);
+							//removeAcc(msg.response.split("'")[1]);
+							removeAcc(AccountToRemove);
+							//console.log("Account to be removed: " + AccountToRemove);
+						}
+						
+						window.location.replace("index.html");
+					}, 1000);
+				}
+			}
+			RenableElements();
+		});
+		
+		function hostGame() {
+			//location.replace("host-game.html");
+			location.href = "host-game.html";
+		}
+		function joinGame() {
+			//location.replace("join-game.html");
+			location.href = "join-game.html";
+		}
+	</script>
+	
+	<script type="text/javascript">
+		var accountOverview = document.getElementById("accountOverview");
+		var ActiveAccounts = JSON.parse(localStorage.getItem("savedAccs"));
+		if (ActiveAccounts == null || ActiveAccounts.length < 1 || ActiveAccounts == "null") {
+			ActiveAccounts = [];
+		}
+		//console.log(ActiveAccounts);
+		
+		// Display Saved Accounts in Dialog
+		function loadAccs() {
+			accountOverview.innerHTML = "";
+			if (ActiveAccounts.length > 0) {
+				for (i = 0; i < ActiveAccounts.length; i++) {
+					var SelectedAccount = ActiveAccounts[i];
+					//console.log(SelectedAccount);
+					var accContainer = document.createElement("div");
+					accContainer.className = "accContainer";
+					var accIcon = document.createElement("img");
+					accIcon.className = "accIcon";
+					var accName = document.createElement("input");
+					accName.className = "accName";
+					accName.id = "accName" + i.toString();
+					console.log(accName.id);
+					accName.disabled = true;
+					var accPass = document.createElement("input");
+					accPass.className = "accPass";
+					accPass.type = "password";
+					accPass.id = "accPass" + i.toString();
+					accIcon.id = "accIcon" + i.toString();
+					accPass.placeholder = "Password";
+					var quickLogin = document.createElement("button");
+					quickLogin.innerHTML = "->";
+					quickLogin.className = "quickLogin";
+					quickLogin.id = "accBtn" + i.toString();
+					//quickLogin.addEventListener("click", QuickLogin(accName.id, accPass.id), false);
+					accIcon.src = SelectedAccount.icon;
+					//accName.innerHTML = SelectedAccount.username;
+					accName.value = SelectedAccount.username;
+					accContainer.appendChild(accIcon);
+					accContainer.appendChild(accName);
+					accContainer.appendChild(quickLogin);
+					accContainer.appendChild(accPass);
+					accountOverview.appendChild(accContainer);
+					if (localStorage.getItem("imgOverride-".concat(SelectedAccount.username)) != null) {
+						accIcon.src = localStorage.getItem("imgOverride-".concat(SelectedAccount.username));
+					}
+					//quickLogin.onclick += function() { QuickLogin(accName.id, accPass.id) };
+					//quickLogin.addEventListener("click", QuickLogin(accName.id, accPass.id), false);
+					/*quickLogin.addEventListener("click", function(event) {
+						QuickLogin(accName.id, accPass.id);
+						event.preventDefault();
+					});*/
+				}
+			} else {
+				console.log("Unable to load saved accounts. No accounts saved locally yet.\nLikely browser data was cleared, or first visit to this page.");
+			}
+		}
+		
+		document.addEventListener('click',function(e){
+			if(e.target && e.target.id.indexOf("accBtn") !== -1){
+				var AccountID = e.target.id.toString().replace("accBtn", "");
+				QuickLogin(("accName" + AccountID).toString(), ("accPass" + AccountID).toString());
+				e.target.disabled = true;
+				DisabledElements.push(e.target);
+			}
+		});
+		
+		var DisabledElements = [];
+		
+		function RenableElements() {
+			for (x = 0; x < DisabledElements.length; x++) {
+				DisabledElements[x].disabled = false;
+			}
+		}
+		
+		function saveAcc(targetName, targetImg) {
+			if (ActiveAccounts.map(function(e) { return e.username; }).indexOf(targetName) == -1) {
+				if (targetImg == "" || targetImg == null) {
+					targetImg = "assets/blank-person.png";
+				} else {
+					targetImg = targetImg.replace(" ", "%20");
+				}
+				var AccountObject = ({username: targetName, icon: targetImg});
+				//console.log(AccountObject);
+				ActiveAccounts.push(AccountObject);
+				//console.log(ActiveAccounts);
+				localStorage.setItem('savedAccs', JSON.stringify(ActiveAccounts));
+			} else {
+				console.log("Account Already Saved to Local Storage, so will ignore saving process.");
+			}
+		}
+		
+		function removeAcc(targetName) {
+			for (z = 0; z < ActiveAccounts.length; z++) {
+				if (ActiveAccounts[z].username === targetName) {
+					ActiveAccounts.splice(z, 1);
+					localStorage.setItem('savedAccs', JSON.stringify(ActiveAccounts));
+					break;
+				}
+			}
+		}
+		
+		loadAccs();
+	</script>
+	<script type="text/javascript">
+		var MainMenu = document.getElementsByClassName("mainMenu")[0];
+		var ManualLogin = document.getElementsByClassName("manLogin")[0];
+		var Register = document.getElementsByClassName("register")[0];
+		function ShowManualLogin() {
+			MainMenu.style.animation = "notify-close 1.5s forwards";
+			setTimeout(function() {
+				MainMenu.style.display = "none";
+				ManualLogin.style.display = "block";
+				ManualLogin.style.animation = "notify-open 1.5s forwards";
+			}, 1200);
+		}
+		//localStorage.setItem("activeUser", msg.username);
+		function ShowMainMenu() {
+			var Multiplier = 1;
+			var CurrentUser = sessionStorage.getItem("activeUser");
+			MainMenu.style.animation = "notify-close 1.5s forwards";
+			if (CurrentUser != null && CurrentUser != "undefined" && CurrentUser != "") {
+				setTimeout(function() {
+					document.getElementById("welcomeMsg").innerHTML = "Welcome back, " + CurrentUser;
+					document.getElementById("mainContents").style.display = "block";
+					document.getElementById("loginContents").style.display = "none"; 
+				}, 1200);
+				Multiplier = 1;
+			} else {
+				setTimeout(function() {
+					document.getElementById("welcomeMsg").innerHTML = "Welcome to CydeaOS";
+					document.getElementById("mainContents").style.display = "none";
+					document.getElementById("loginContents").style.display = "block";
+				}, 1200);
+				loadAccs();
+			}
+			ManualLogin.style.animation = "notify-close 1.5s forwards";
+			Register.style.animation = "notify-close 1.5s forwards";
+			setTimeout(function() {
+				ManualLogin.style.display = "none";
+				Register.style.display = "none";
+				MainMenu.style.display = "block";
+				MainMenu.style.animation = "notify-open 1.5s forwards";
+			}, 1200 * Multiplier);	
+		}
+		
+		function HideMainMenu() {
+			MainMenu.style.animation = "notify-close 1.5s forwards";
+			setTimeout(function() {
+				MainMenu.style.display = "none";
+			}, 1200);
+		}
+		
+		function ShowRegister() {
+			MainMenu.style.animation = "notify-close 1.5s forwards";
+			setTimeout(function() {
+				MainMenu.style.display = "none";
+				Register.style.display = "block";
+				Register.style.animation = "notify-open 1.5s forwards";
+			}, 1200);
+		}
+		ShowMainMenu();
+	</script>
+	<script type="text/javascript" src="assets/scripts/audio mixer/Main Menu Mixer.js"></script>
+	<script type="text/javascript" src="assets/scripts/settings.js"></script>
+	<script type="text/javascript" src="assets/scripts/versionInfo.js"></script>
+	<!--script type="text/javascript" src="assets/scripts/scalePage.js"></script-->
+
+</body></html>
